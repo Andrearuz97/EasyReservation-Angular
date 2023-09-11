@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { HotelListComponent } from './components/hotel/hotel-list/hotel-list.component';

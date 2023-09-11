@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HotelComponent } from './components/hotel/hotel.component';
 import { RoomComponent } from './components/room/room.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { HotelDetailsComponent } from './components/hotel/hotel-details/hotel-details.component';
+import { HotelListComponent } from './components/hotel/hotel-list/hotel-list.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/token.interceptor';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +27,19 @@ import { HotelDetailsComponent } from './components/hotel/hotel-details/hotel-de
     RoomComponent,
     ReservationComponent,
     UserProfileComponent,
-    HotelDetailsComponent
+    HotelDetailsComponent,
+    HotelListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

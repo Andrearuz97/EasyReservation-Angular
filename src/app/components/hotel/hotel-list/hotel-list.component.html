@@ -1,16 +1,12 @@
-<p>hotel-list works!</p>
-<!-- hotel.component.html -->
+<!-- hotel-list.component.html -->
 <div class="container mt-5">
-  <h2>Elenco Hotel</h2>
-  <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5>Nome Hotel 1</h5>
-      <p>Breve descrizione dell'hotel 1...</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5>Nome Hotel 2</h5>
-      <p>Breve descrizione dell'hotel 2...</p>
-    </a>
-    <!-- Aggiungi altri hotel come necessario -->
-  </div>
+  <h2>Lista degli Hotel</h2>
+  <ul class="list-group mt-3">
+    <li *ngFor="let hotel of hotels" class="list-group-item">
+      {{ hotel.name }}
+      <a [routerLink]="['/hotel', hotel.id]" class="btn btn-secondary btn-sm float-right">Vedi Dettagli</a>
+    </li>
+  </ul>
+  <a routerLink="/reservation" class="btn btn-primary mt-3">Vai alle mie prenotazioni</a>
 </div>
+

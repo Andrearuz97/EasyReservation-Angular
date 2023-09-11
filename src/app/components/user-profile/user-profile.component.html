@@ -1,1 +1,4 @@
-<p>user-profile works!</p>
+<div *ngIf="utente">
+  <h2>Profilo di {{ utente.nome }}</h2>
+  <p>Email: {{ utente.email }}</p>
+</div>
