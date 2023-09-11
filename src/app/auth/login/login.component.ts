@@ -1,30 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  public email: string = '';
-  public password: string = '';
-  public statusMessage: string = '';
+    public statusMessage: string = '';
 
-  constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService, private router: Router) {}
 
-  onLogin() {
-    this.authService.login({ email: this.email, password: this.password }).subscribe(
-      (data) => {
-        console.log(data);
-        this.statusMessage = 'Login effettuato con successo!';
-      },
-      (error) => {
-        console.error(error);
-        this.statusMessage = 'Login fallito.';
-      }
-    );
-  }
+    ngOnInit(): void {}
+
+    login(form: NgForm) {
+        this.authService.login(form.value).subscribe(
+            () => {
+                this.statusMessage = 'Login effettuato con successo!';
+                this.router.navigate(['/']);
+            },
+            (error) => {
+                console.error(error);
+                this.statusMessage = 'Login fallito.';
+                this.router.navigate(['/login']);
+            }
+        );
+    }
 }
 

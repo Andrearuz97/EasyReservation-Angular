@@ -4,12 +4,12 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login" *ngIf="!utente">Login</a>
+    <ul class="navbar-nav">
+      <li class="nav-item" *ngIf="!isUserLoggedIn()">
+        <a class="nav-link" routerLink="/login">Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register" *ngIf="!utente">Registrati</a>
+      <li class="nav-item" *ngIf="!isUserLoggedIn()">
+        <a class="nav-link" routerLink="/register">Registrati</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/hotels">Hotel</a>
@@ -17,14 +17,12 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/reservation">Prenotazioni</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isUserLoggedIn()">
         <a class="nav-link" routerLink="/user-profile">Profilo</a>
       </li>
     </ul>
-
-    <div class="text-end">
-      <h6 *ngIf="utente" class="text-warning">Benvenuto/a {{utente.nome}}</h6>
-      <button type="button" id="logout" name="logout" class="btn btn-danger me-0" *ngIf="utente" (click)="logout()">Esci</button>
-    </div>
   </div>
+  <div class="nav-item text-end me-4" *ngIf="isUserLoggedIn()">
+    <a href="" class="nav-link btn-btn-danger" (click)="logout()">Logout</a>
+ </div>
 </nav>

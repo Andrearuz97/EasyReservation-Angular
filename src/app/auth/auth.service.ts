@@ -7,6 +7,7 @@ import { BehaviorSubject, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -75,4 +76,3 @@ export class AuthService {
     return this.authSubj.getValue();
   }
 }
-
