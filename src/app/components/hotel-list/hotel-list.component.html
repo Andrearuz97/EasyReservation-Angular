@@ -1,12 +1,11 @@
-<!-- hotel-list.component.html -->
 <div class="container mt-5">
   <h2>Lista degli Hotel</h2>
   <ul class="list-group mt-3">
     <li *ngFor="let hotel of hotels" class="list-group-item">
-      {{ hotel.name }}
+      {{ hotel.nome }}
       <a [routerLink]="['/hotel', hotel.id]" class="btn btn-secondary btn-sm float-right">Vedi Dettagli</a>
     </li>
   </ul>
-  <a routerLink="/reservation" class="btn btn-primary mt-3">Vai alle mie prenotazioni</a>
 </div>
+
 

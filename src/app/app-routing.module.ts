@@ -4,25 +4,28 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
-import { HotelListComponent } from './components/hotel/hotel-list/hotel-list.component';
-import { HotelDetailsComponent } from './components/hotel/hotel-details/hotel-details.component';
-import { RoomDetailsComponent } from './components/room/room-details/room-details.component';
+import { HotelListComponent } from './components/hotel-list/hotel-list.component';
+import { HotelDetailsComponent } from './components/hotel-details/hotel-details.component';
+import { RoomDetailsComponent } from './components/room-details/room-details.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'navbar', component: NavbarComponent },
-  { path: 'reservation', component: ReservationComponent },
-  { path: 'hotels', component: HotelListComponent },
-  { path: 'hotel/:id', component: HotelDetailsComponent },
-  { path: 'room/:id', component: RoomDetailsComponent },
-  { path: 'user-profile', component: UserProfileComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'reservation', component: ReservationComponent, canActivate: [AuthGuard] },
+  { path: 'hotels', component: HotelListComponent, canActivate: [AuthGuard] },
+  { path: 'hotel/:id', component: HotelDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'room/:id', component: RoomDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule{};

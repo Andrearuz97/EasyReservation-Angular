@@ -6,16 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HotelComponent } from './components/hotel/hotel.component';
-import { RoomComponent } from './components/room/room.component';
+import { HotelDetailsComponent } from './components/hotel-details/hotel-details.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { HotelDetailsComponent } from './components/hotel/hotel-details/hotel-details.component';
-import { HotelListComponent } from './components/hotel/hotel-list/hotel-list.component';
+import { HotelListComponent } from './components/hotel-list/hotel-list.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
+import { CommonModule } from '@angular/common';
+import { RoomDetailsComponent } from './components/room-details/room-details.component';
 
 @NgModule({
   declarations: [
@@ -23,19 +23,19 @@ import { HomeComponent } from './components/home/home.component';
     RegisterComponent,
     LoginComponent,
     NavbarComponent,
-    HotelComponent,
-    RoomComponent,
     ReservationComponent,
     UserProfileComponent,
     HotelDetailsComponent,
     HotelListComponent,
-    HomeComponent
+    HomeComponent,
+    RoomDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

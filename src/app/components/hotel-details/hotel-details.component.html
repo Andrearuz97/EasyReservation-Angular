@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <h2>Dettagli dell'Hotel: {{ hotel?.nome }}</h2>
+  <p>{{ hotel?.descrizione }}</p>
+
+  <h4 class="mt-4">Stanze disponibili</h4>
+  <ul class="list-group mt-3">
+    <li class="list-group-item" *ngFor="let room of rooms">
+      Stanza {{ room.numeroStanza }}
+      <a routerLink="/room-details/{{ room.id }}" class="btn btn-secondary btn-sm float-right">Vedi Dettagli</a>
+   </li>
+
+  </ul>
+  <a routerLink="/hotels" class="btn btn-primary mt-3">Torna alla lista degli hotel</a>
+</div>
