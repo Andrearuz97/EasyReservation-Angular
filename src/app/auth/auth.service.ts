@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -75,4 +76,26 @@ export class AuthService {
   getUserDetails(): Auth | null {
     return this.authSubj.getValue();
   }
+
+
+  getUserInfoFromToken(): any {
+    const currentUser = this.authSubj.getValue();
+    if (currentUser && currentUser.accessToken) {
+      const decodedToken = this.jwtHelper.decodeToken(currentUser.accessToken);
+
+      const userInfo = {
+        sub: decodedToken.sub
+      };
+      return userInfo;
+    }
+    return null;
+  }
+
+  getUserDetailsById(userId: string): Observable<any> {
+    console.log("Getting user details for:", userId);
+    return this.http.get<any>(`${this.baseURL}users/${userId}`);
+}
+
+
+
 }
