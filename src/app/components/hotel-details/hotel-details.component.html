@@ -21,7 +21,10 @@
       <div class="card h-100 shadow">
         <div class="card-body">
           <h5 class="card-title">Stanza {{ room.numeroStanza }}</h5>
-          <a routerLink="/room-details/{{ room.id }}" class="btn btn-primary mt-2">Vedi Dettagli</a>
+          <a [routerLink]="['/stanza/hotel', hotelId, room.id]" class="btn btn-primary mt-2">Vedi Dettagli</a>
+
+
+
         </div>
       </div>
     </div>

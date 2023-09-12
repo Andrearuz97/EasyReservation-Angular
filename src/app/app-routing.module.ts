@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'reservation', component: ReservationComponent, canActivate: [AuthGuard] },
   { path: 'hotels', component: HotelListComponent, canActivate: [AuthGuard] },
   { path: 'hotel/:id', component: HotelDetailsComponent, canActivate: [AuthGuard] },
-  { path: 'room/:id', component: RoomDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'stanza/hotel/:hotelId/:roomId', component: RoomDetailsComponent, canActivate: [AuthGuard] },
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
 ];
 

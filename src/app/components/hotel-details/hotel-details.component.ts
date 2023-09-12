@@ -10,9 +10,10 @@ import { RoomService } from 'src/app/services/room.service';
   styleUrls: ['./hotel-details.component.scss']
 })
 export class HotelDetailsComponent implements OnInit {
-
   hotel: Hotel | undefined;
   rooms: Room[] = [];
+  hotelId!: number; // Aggiungi questa linea
+
   constructor(
     private hotelService: HotelService,
     private roomService: RoomService,
@@ -25,6 +26,7 @@ export class HotelDetailsComponent implements OnInit {
 
   loadHotelDetails(): void {
     const id = +this.route.snapshot.paramMap.get('id')!; // Ricava l'ID dall'URL
+    this.hotelId = id; // Imposta il valore di hotelId
     this.hotelService.getHotelById(id).subscribe(hotel => {
       this.hotel = hotel;
       // Una volta ottenuto l'hotel, carica le stanze per quel particolare hotel

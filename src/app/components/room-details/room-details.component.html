@@ -1,7 +1,7 @@
 <div class="container mt-5" *ngIf="room">
-  <h2> {{room.numeroStanza}}</h2>
+  <h2>Stanza n. {{room.numeroStanza}}</h2>
   <p><strong>Tipo:</strong> {{room.tipo}}</p>
-  <p><strong>Prezzo:</strong> {{room.prezzo | currency:'EUR':'symbol'}}</p>
+  <p><strong>Prezzo per notte:</strong> {{room.prezzo | currency:'EUR':'symbol'}}</p>
   <h4>Dettagli dell'Hotel</h4>
   <p><strong>Nome:</strong> {{room.hotel.nome}}</p>
   <p><strong>Indirizzo:</strong> {{room.hotel.indirizzo}}</p>

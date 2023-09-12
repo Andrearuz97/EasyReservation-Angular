@@ -18,9 +18,11 @@ export class RoomService {
     return this.http.get<Room[]>(`${this.baseUrl}stanze/hotel`);
   }
 
-  getRoomById(id: number): Observable<Room> {
-    return this.http.get<Room>(`${this.baseUrl}stanze/hotel/${id}`);
+  getRoomByHotelAndRoomId(hotelId: number, roomId: number): Observable<Room> {
+    return this.http.get<Room>(`${this.baseUrl}stanze/hotel/${hotelId}/${roomId}`);
   }
+
+
 
   getRoomsByHotelId(hotelId: number): Observable<Room[]> {
     return this.http.get<Room[]>(`${this.baseUrl}stanze/hotel/${hotelId}`);
