@@ -1,14 +1,31 @@
 <div class="container mt-5">
-  <h2>Dettagli dell'Hotel: {{ hotel?.nome }}</h2>
-  <p>{{ hotel?.descrizione }}</p>
+  <h2>Dettagli dell'Hotel</h2>
+
+  <!-- Card dell'hotel -->
+  <div class="card mb-5 shadow">
+    <!-- Immagine dell'hotel -->
+    <img [src]="hotel?.imageUrl" alt="{{ hotel?.nome }}" class="card-img-top">
+    <div class="card-body">
+      <h3 class="card-title">{{ hotel?.nome }}</h3>
+      <p class="card-text"><strong>Descrizione:</strong> {{ hotel?.descrizione }}</p>
+      <p class="card-text"><strong>Indirizzo:</strong> {{ hotel?.indirizzo }}</p>
+      <p class="card-text"><strong>Stelle:</strong> {{ hotel?.stelle }} <i class="fas fa-star text-warning"></i></p>
+    </div>
+  </div>
 
   <h4 class="mt-4">Stanze disponibili</h4>
-  <ul class="list-group mt-3">
-    <li class="list-group-item" *ngFor="let room of rooms">
-      Stanza {{ room.numeroStanza }}
-      <a routerLink="/room-details/{{ room.id }}" class="btn btn-secondary btn-sm float-right">Vedi Dettagli</a>
-   </li>
 
-  </ul>
-  <a routerLink="/hotels" class="btn btn-primary mt-3">Torna alla lista degli hotel</a>
+  <!-- Lista delle stanze -->
+  <div class="row mt-3">
+    <div class="col-md-4 mb-4" *ngFor="let room of rooms">
+      <div class="card h-100 shadow">
+        <div class="card-body">
+          <h5 class="card-title">Stanza {{ room.numeroStanza }}</h5>
+          <a routerLink="/room-details/{{ room.id }}" class="btn btn-primary mt-2">Vedi Dettagli</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a routerLink="/hotels" class="btn btn-secondary mt-3">Torna alla lista degli hotel</a>
 </div>

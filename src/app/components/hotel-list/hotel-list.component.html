@@ -1,11 +1,17 @@
 <div class="container mt-5">
   <h2>Lista degli Hotel</h2>
-  <ul class="list-group mt-3">
-    <li *ngFor="let hotel of hotels" class="list-group-item">
-      {{ hotel.nome }}
-      <a [routerLink]="['/hotel', hotel.id]" class="btn btn-secondary btn-sm float-right">Vedi Dettagli</a>
-    </li>
-  </ul>
+  <div class="row mt-3">
+    <div class="col-md-4" *ngFor="let hotel of hotels">
+      <div class="card mb-4">
+        <img class="card-img-top" [src]="hotel.imageUrl" alt="Image for {{ hotel.nome }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ hotel.nome }}</h5>
+          <p class="card-text">{{ hotel.descrizione }}</p>
+          <p class="card-text"><small class="text-muted">{{ hotel.indirizzo }}</small></p>
+          <p class="card-text"><small class="text-muted">Stelle: {{ hotel.stelle }}</small></p>
+          <a [routerLink]="['/hotel', hotel.id]" class="btn btn-primary">Vedi Dettagli</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
