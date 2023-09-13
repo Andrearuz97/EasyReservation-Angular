@@ -95,6 +95,11 @@ export class AuthService {
     console.log("Getting user details for:", userId);
     return this.http.get<any>(`${this.baseURL}users/${userId}`);
 }
+currentUserId(): string | null {
+  const userInfo = this.getUserInfoFromToken();
+  return userInfo ? userInfo.sub : null;
+}
+
 
 
 

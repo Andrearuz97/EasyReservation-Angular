@@ -1,12 +1,23 @@
-<!-- reservation.component.html -->
 <div class="container mt-5">
-  <h2>Le tue prenotazioni</h2>
-  <ul class="list-group mt-3">
-    <!-- Esempio di una prenotazione, dovresti iterare sulle prenotazioni con *ngFor in seguito -->
-    <li class="list-group-item">
-      Hotel XYZ - Stanza 123
-      <a href="#" class="btn btn-secondary btn-sm float-right">Dettagli</a>
-    </li>
-  </ul>
-</div>
+  <h2>Prenotazione</h2>
 
+  <form (ngSubmit)="prenota()">
+      <!-- Seleziona hotel -->
+      <div class="mb-3">
+          <label for="hotelSelect" class="form-label">Seleziona Hotel</label>
+          <select id="hotelSelect" class="form-select" [(ngModel)]="selectedHotel" name="selectedHotel" (change)="onHotelSelect(selectedHotel)">
+              <option *ngFor="let hotel of hotels" [ngValue]="hotel">{{ hotel.nome }}</option>
+          </select>
+      </div>
+
+      <!-- Seleziona stanza -->
+      <div class="mb-3">
+          <label for="roomSelect" class="form-label">Seleziona Stanza</label>
+          <select id="roomSelect" class="form-select" [(ngModel)]="selectedRoom" name="selectedRoom">
+              <option *ngFor="let room of rooms" [ngValue]="room">{{ room.numeroStanza }} - {{ room.tipo }}</option>
+          </select>
+      </div>
+
+
+  </form>
+</div>

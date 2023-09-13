@@ -17,16 +17,16 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {}
 
     login(form: NgForm) {
-        this.authService.login(form.value).subscribe(
-            () => {
-                this.statusMessage = 'Login effettuato con successo!';
-                this.router.navigate(['/']);
-            },
-            (error) => {
-                console.error(error);
-                this.statusMessage = 'Login fallito.';
-                this.router.navigate(['/login']);
-            }
+              this.authService.login(form.value).subscribe(
+                () => {
+                    alert('Login effettuato con successo!');
+                    this.router.navigate(['/']);
+                },
+                (error) => {
+                    console.error(error);
+                    alert('Login fallito.');
+                    this.router.navigate(['/login']);
+                }
         );
     }
 }
