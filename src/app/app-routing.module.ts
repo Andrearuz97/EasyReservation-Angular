@@ -10,6 +10,7 @@ import { RoomDetailsComponent } from './components/room-details/room-details.com
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth/auth.guard';
+import { UserReservationComponent } from './components/user-reservation/user-reservation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,6 +23,8 @@ const routes: Routes = [
   { path: 'hotel/:id', component: HotelDetailsComponent, canActivate: [AuthGuard] },
   { path: 'stanza/hotel/:hotelId/:roomId', component: RoomDetailsComponent, canActivate: [AuthGuard] },
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
+  { path: 'my-reservations', component: UserReservationComponent, canActivate: [AuthGuard] },
+
 ];
 
 @NgModule({

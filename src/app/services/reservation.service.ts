@@ -16,8 +16,8 @@ export class ReservationService {
     return this.http.get<Reservation>(`${this.baseUrl}prenotazioni/${id}`);
   }
 
-  createPrenotazione(data: Reservation): Observable<Reservation> {
-    return this.http.post<Reservation>(`${this.baseUrl}prenotazioni`, data);
+  createPrenotazione(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}prenotazioni/prenota`, data);
   }
 
   getPrenotazioniByUserId(userId: string): Observable<Reservation[]> {

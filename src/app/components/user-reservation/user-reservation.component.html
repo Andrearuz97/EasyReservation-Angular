@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <h2>Le tue prenotazioni</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>ID Prenotazione</th>
+        <th>Data Check-In</th>
+        <th>Data Check-Out</th>
+        <th>Numero Stanza</th>
+        <th>Hotel Associato</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of reservations">
+        <td>{{ reservation.utente.name }}</td>
+        <td>{{ reservation.utente.surname }}</td>
+        <td>{{ reservation.id }}</td>
+        <td>{{ reservation.dataCheckIn | date:'medium'  }}</td>
+        <td>{{ reservation.dataCheckOut | date:'medium'  }}</td>
+        <td>{{ reservation.stanza.numeroStanza }}</td>
+        <td>{{ reservation.stanza.hotel.nome }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -5,7 +5,6 @@ import { HotelService } from 'src/app/services/hotel.service';
 import { RoomService } from 'src/app/services/room.service';
 import { Hotel } from 'src/app/models/hotel.model';
 import { Room } from 'src/app/models/room.interface';
-import { Reservation } from 'src/app/models/reservation.interface';
 
 @Component({
   selector: 'app-reservation',
@@ -39,38 +38,36 @@ export class ReservationComponent implements OnInit {
 
   onHotelSelect(hotel: Hotel | null): void {
     if (hotel) {
-        this.selectedHotel = hotel;
-        this.loadRoomsByHotelId(hotel.id);
+      this.selectedHotel = hotel;
+      this.loadRoomsByHotelId(hotel.id);
     }
-}
+  }
 
-
-loadRoomsByHotelId(hotelId: number): void {
-  this.roomService.getRoomsByHotelId(hotelId).subscribe(rooms => {
-    this.rooms = rooms;
-  }, error => {
-    console.error('Errore nel caricamento delle stanze:', error);
-  });
-}
-
+  loadRoomsByHotelId(hotelId: number): void {
+    this.roomService.getRoomsByHotelId(hotelId).subscribe(rooms => {
+      this.rooms = rooms;
+    }, error => {
+      console.error('Errore nel caricamento delle stanze:', error);
+    });
+  }
 
   prenota(): void {
     if (this.selectedRoom && this.dataCheckIn && this.dataCheckOut) {
-      const userId = this.authService.currentUserId() ?? 'unknown-user';
-      const reservation: Reservation = {
-        id: 0,
+      const reservationData = {
         dataCheckIn: this.dataCheckIn,
         dataCheckOut: this.dataCheckOut,
-        utenteId: userId,
-        stanza: this.selectedRoom.id.toString()
+        stanzaId: this.selectedRoom.id
       };
 
-      this.reservationService.createPrenotazione(reservation)
+      this.reservationService.createPrenotazione(reservationData)
         .subscribe(response => {
           alert('Prenotazione effettuata con successo!');
         }, error => {
           alert('Si è verificato un errore durante la prenotazione.');
+          console.error(error);
         });
+    } else {
+      alert('Per favore, compila tutti i campi.');
     }
   }
 }
