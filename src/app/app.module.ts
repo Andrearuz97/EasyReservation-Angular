@@ -17,6 +17,8 @@ import { HomeComponent } from './components/home/home.component';
 import { CommonModule } from '@angular/common';
 import { RoomDetailsComponent } from './components/room-details/room-details.component';
 import { UserReservationComponent } from './components/user-reservation/user-reservation.component';
+import { EditReservationComponent } from './components/edit-reservation/edit-reservation.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,14 +32,16 @@ import { UserReservationComponent } from './components/user-reservation/user-res
     HotelListComponent,
     HomeComponent,
     RoomDetailsComponent,
-    UserReservationComponent
+    UserReservationComponent,
+    EditReservationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

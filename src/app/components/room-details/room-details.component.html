@@ -7,6 +7,9 @@
   <p><strong>Indirizzo:</strong> {{room.hotel.indirizzo}}</p>
   <p><strong>Descrizione:</strong> {{room.hotel.descrizione}}</p>
   <p><strong>Stelle:</strong> {{room.hotel.stelle}}</p>
+  <a [routerLink]="['/user-reservation', room.hotel.id, room.id]" class="btn btn-success mt-3">Prenota ora</a>
+
+
   <a routerLink="/hotels" class="btn btn-primary mt-3">Torna alla lista degli hotel</a>
 
   </div>

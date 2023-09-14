@@ -4,6 +4,7 @@ export interface Room {
   tipo: string;
   prezzo: number;
   hotel: {
+    id: number;
     nome: string;
     indirizzo: string;
     descrizione: string;

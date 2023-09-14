@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { HotelService } from 'src/app/services/hotel.service';
@@ -20,6 +21,7 @@ export class ReservationComponent implements OnInit {
   dataCheckOut: Date | null = null;
 
   constructor(
+    private route: ActivatedRoute,
     private hotelService: HotelService,
     private roomService: RoomService,
     private reservationService: ReservationService,
@@ -28,6 +30,16 @@ export class ReservationComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadHotels();
+
+    const hotelIdParam = this.route.snapshot.paramMap.get('hotelId');
+    const roomIdParam = this.route.snapshot.paramMap.get('roomId');
+
+    if (hotelIdParam && roomIdParam) {
+      const hotelId = +hotelIdParam;
+      const roomId = +roomIdParam;
+
+      this.loadSelectedHotelAndRoom(hotelId, roomId);
+    }
   }
 
   loadHotels(): void {
@@ -36,18 +48,24 @@ export class ReservationComponent implements OnInit {
     });
   }
 
-  onHotelSelect(hotel: Hotel | null): void {
-    if (hotel) {
+  loadSelectedHotelAndRoom(hotelId: number, roomId: number): void {
+    this.hotelService.getHotelById(hotelId).subscribe(hotel => {
       this.selectedHotel = hotel;
-      this.loadRoomsByHotelId(hotel.id);
-    }
+
+      this.roomService.getRoomByHotelAndRoomId(hotelId, roomId).subscribe(room => {
+        this.selectedRoom = room;
+      });
+    });
+  }
+
+  onHotelSelect(hotel: Hotel): void {
+    this.selectedHotel = hotel;
+    this.loadRoomsByHotelId(hotel.id);
   }
 
   loadRoomsByHotelId(hotelId: number): void {
     this.roomService.getRoomsByHotelId(hotelId).subscribe(rooms => {
       this.rooms = rooms;
-    }, error => {
-      console.error('Errore nel caricamento delle stanze:', error);
     });
   }
 

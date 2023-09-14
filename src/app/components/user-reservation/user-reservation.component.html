@@ -10,7 +10,9 @@
         <th>Data Check-In</th>
         <th>Data Check-Out</th>
         <th>Numero Stanza</th>
+        <th>Tipo Stanza</th>
         <th>Hotel Associato</th>
+        <th>Azioni</th>
       </tr>
     </thead>
     <tbody>
@@ -18,10 +20,15 @@
         <td>{{ reservation.utente.name }}</td>
         <td>{{ reservation.utente.surname }}</td>
         <td>{{ reservation.id }}</td>
-        <td>{{ reservation.dataCheckIn | date:'medium'  }}</td>
-        <td>{{ reservation.dataCheckOut | date:'medium'  }}</td>
+        <td>{{ reservation.dataCheckIn | date:'medium' }}</td>
+        <td>{{ reservation.dataCheckOut | date:'medium' }}</td>
         <td>{{ reservation.stanza.numeroStanza }}</td>
+        <td>{{ reservation.stanza.tipo }}</td>
         <td>{{ reservation.stanza.hotel.nome }}</td>
+        <td>
+          <button class="btn btn-primary mr-2" (click)="editReservation(reservation.id)">Modifica</button>
+          <button class="btn btn-danger" (click)="deleteReservation(reservation.id)">Cancella</button>
+        </td>
       </tr>
     </tbody>
   </table>

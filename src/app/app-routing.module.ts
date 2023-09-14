@@ -11,6 +11,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { UserReservationComponent } from './components/user-reservation/user-reservation.component';
+import { EditReservationComponent } from './components/edit-reservation/edit-reservation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,6 +25,10 @@ const routes: Routes = [
   { path: 'stanza/hotel/:hotelId/:roomId', component: RoomDetailsComponent, canActivate: [AuthGuard] },
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'my-reservations', component: UserReservationComponent, canActivate: [AuthGuard] },
+  { path: 'user-reservation/:hotelId/:roomId', component: ReservationComponent},
+  { path: 'edit-reservation/:id', component: EditReservationComponent, canActivate: [AuthGuard] }
+
+
 
 ];
 

@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Reservation } from '../models/reservation.interface';
+import { Room } from '../models/room.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,15 @@ export class ReservationService {
 
   getPrenotazioniByUserId(userId: string): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(`${this.baseUrl}prenotazioni/user/${userId}`);
+  }
+  deletePrenotazione(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}prenotazioni/${id}`);
+  }
+
+  updatePrenotazione(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}prenotazioni/${id}`, data);
+  }
+  getAvailableRoomsByHotelId(hotelId: number): Observable<Room[]> {
+    return this.http.get<Room[]>(`${this.baseUrl}stanze/hotel/${hotelId}`);
   }
 }
