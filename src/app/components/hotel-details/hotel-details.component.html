@@ -9,7 +9,7 @@
       <h3 class="card-title">{{ hotel?.nome }}</h3>
       <p class="card-text"><strong>Descrizione:</strong> {{ hotel?.descrizione }}</p>
       <p class="card-text"><strong>Indirizzo:</strong> {{ hotel?.indirizzo }}</p>
-      <p class="card-text"><strong>Stelle:</strong> {{ hotel?.stelle }} <i class="fas fa-star text-warning"></i></p>
+      <p class="card-text"><strong>Stelle:</strong> {{ hotel?.stelle }} <i class="fas fa-star"></i></p>
     </div>
   </div>
 
@@ -22,9 +22,6 @@
         <div class="card-body">
           <h5 class="card-title">Stanza {{ room.numeroStanza }}</h5>
           <a [routerLink]="['/stanza/hotel', hotelId, room.id]" class="btn btn-primary mt-2">Vedi Dettagli</a>
-
-
-
         </div>
       </div>
     </div>

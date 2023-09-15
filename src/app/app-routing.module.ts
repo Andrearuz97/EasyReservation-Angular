@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -25,15 +26,18 @@ const routes: Routes = [
   { path: 'stanza/hotel/:hotelId/:roomId', component: RoomDetailsComponent, canActivate: [AuthGuard] },
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'my-reservations', component: UserReservationComponent, canActivate: [AuthGuard] },
-  { path: 'user-reservation/:hotelId/:roomId', component: ReservationComponent},
-  { path: 'edit-reservation/:id', component: EditReservationComponent, canActivate: [AuthGuard] }
+  { path: 'user-reservation/:hotelId/:roomId', component: ReservationComponent },
+  { path: 'edit-reservation/:id', component: EditReservationComponent, canActivate: [AuthGuard] },
 
+  // Rotte per la sezione admin:
+  { path: 'admin', loadChildren: () => import('./components/Admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] },
 
-
+  // Rotta di fallback:
+  { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule{};
+export class AppRoutingModule { }

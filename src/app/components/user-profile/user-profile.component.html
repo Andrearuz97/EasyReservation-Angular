@@ -1,4 +1,11 @@
-<div *ngIf="utente">
-  <h2>Profilo di {{ utente.name }} {{utente.surname}}</h2>
-  <p>Email: {{ utente.email }}</p>
+<div *ngIf="utente" class="profile-container">
+  <div class="profile-header">
+    <h2>Profilo di {{ utente.name }} {{utente.surname}}</h2>
+  </div>
+  <div class="profile-details">
+    <p><strong>Email:</strong> {{ utente.email }}</p>
+    <p *ngIf="utente.phone"><strong>Telefono:</strong> {{ utente.phone }}</p>
+    <p *ngIf="utente.dateOfBirth"><strong>Data di Nascita:</strong> {{ utente.dateOfBirth | date }}</p>
+    <p *ngIf="utente.address"><strong>Indirizzo:</strong> {{ utente.address }}</p>
+  </div>
 </div>

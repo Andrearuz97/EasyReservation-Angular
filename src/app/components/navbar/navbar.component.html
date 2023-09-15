@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg custom-navbar">
   <a class="navbar-brand" href="#">EasyReservation</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -25,11 +25,10 @@
       </li>
       <li class="nav-item" *ngIf="isUserLoggedIn()">
         <a class="nav-link" routerLink="/my-reservations">Le mie prenotazioni</a>
-    </li>
-
+      </li>
     </ul>
   </div>
   <div class="nav-item text-end me-4" *ngIf="isUserLoggedIn()">
-    <a href="" class="nav-link btn-btn-danger" (click)="logout()">Logout</a>
- </div>
+    <a href="" class="nav-link custom-logout" (click)="logout()">Logout</a>
+  </div>
 </nav>

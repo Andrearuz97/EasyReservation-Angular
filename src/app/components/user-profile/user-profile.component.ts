@@ -12,7 +12,7 @@ export class UserProfileComponent implements OnInit {
   utente: any;
 
   constructor(
-    private authService: AuthService  // Usa 'private' qui
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {

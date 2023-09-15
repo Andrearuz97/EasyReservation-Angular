@@ -99,6 +99,13 @@ currentUserId(): string | null {
   const userInfo = this.getUserInfoFromToken();
   return userInfo ? userInfo.sub : null;
 }
+isAdmin(): boolean {
+  const token = this.getUserInfoFromToken();
+  if (token && token.roles && token.roles.indexOf('admin') !== -1) {
+      return true;
+  }
+  return false;
+}
 
 
 

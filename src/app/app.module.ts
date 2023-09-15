@@ -14,7 +14,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
-import { CommonModule } from '@angular/common';
 import { RoomDetailsComponent } from './components/room-details/room-details.component';
 import { UserReservationComponent } from './components/user-reservation/user-reservation.component';
 import { EditReservationComponent } from './components/edit-reservation/edit-reservation.component';
@@ -40,7 +39,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CommonModule,
     ReactiveFormsModule
   ],
   providers: [
