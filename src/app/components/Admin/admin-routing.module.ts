@@ -5,19 +5,39 @@ import { AdminHotelListComponent } from './hotel-management/admin-hotel-list/adm
 import { AdminHotelEditComponent } from './hotel-management/admin-hotel-edit/admin-hotel-edit.component';
 import { AdminHotelDetailComponent } from './hotel-management/admin-hotel-detail/admin-hotel-detail.component';
 import { OverviewComponent } from './admin-dashboard/overview/overview.component';
-
+import { AdminRoomDetailComponent } from './room-management/admin-room-detail/admin-room-detail.component';
+import { AdminRoomListComponent } from './room-management/admin-room-list/admin-room-list.component';
+import { AdminRoomEditComponent } from './room-management/admin-room-edit/admin-room-edit.component';
+import { AdminUserListComponent } from './user-management/admin-user-list/admin-user-list.component';
+import { AdminUserEditComponent } from './user-management/admin-user-edit/admin-user-edit.component';
+import { AdminUserDetailComponent } from './user-management/admin-user-detail/admin-user-detail.component';
+import { AuthGuard } from 'src/app/auth/auth.guard';
 const routes: Routes = [
   {
-    path: '', component: AdminDashboardComponent, children: [
+    path: '',
+    component: AdminDashboardComponent,
+    canActivate: [AuthGuard],
+    data: { role: 'ADMIN' },
+    children: [
       { path: '', redirectTo: 'overview', pathMatch: 'full' },
       { path: 'overview', component: OverviewComponent },
       { path: 'hotels', component: AdminHotelListComponent },
+      { path: 'hotels/edit', component: AdminHotelEditComponent },
       { path: 'hotels/edit/:id', component: AdminHotelEditComponent },
+      { path: 'hotels/new', component: AdminHotelEditComponent },
       { path: 'hotels/:id', component: AdminHotelDetailComponent },
-      // ... altre rotte admin ...
+      { path: 'rooms', component: AdminRoomListComponent },
+      { path: 'rooms/edit/:id', component: AdminRoomEditComponent },
+      { path: 'rooms/:id', component: AdminRoomDetailComponent },
+      { path: 'users', component: AdminUserListComponent },
+      { path: 'users/edit/:id', component: AdminUserEditComponent },
+      { path: 'users/:id', component: AdminUserDetailComponent },
     ]
   }
 ];
+
+
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

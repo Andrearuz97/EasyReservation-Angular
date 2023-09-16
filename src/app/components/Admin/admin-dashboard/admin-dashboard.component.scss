@@ -1,0 +1,30 @@
+.admin-dashboard {
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+
+  h2 {
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .admin-menu {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 0.5rem;
+
+      a {
+        text-decoration: none;
+        color: #0077cc;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #0055a5;
+        }
+      }
+    }
+  }
+}

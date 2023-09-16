@@ -15,6 +15,7 @@ import { AdminUserListComponent } from './user-management/admin-user-list/admin-
 import { AdminUserEditComponent } from './user-management/admin-user-edit/admin-user-edit.component';
 import { AdminUserDetailComponent } from './user-management/admin-user-detail/admin-user-detail.component';
 import { AdminRoutingModule } from './admin-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AdminRoutingModule } from './admin-routing.module';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

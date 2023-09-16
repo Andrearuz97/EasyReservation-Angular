@@ -81,15 +81,16 @@ export class AuthService {
   getUserInfoFromToken(): any {
     const currentUser = this.authSubj.getValue();
     if (currentUser && currentUser.accessToken) {
-      const decodedToken = this.jwtHelper.decodeToken(currentUser.accessToken);
-
-      const userInfo = {
-        sub: decodedToken.sub
-      };
-      return userInfo;
+        const decodedToken = this.jwtHelper.decodeToken(currentUser.accessToken);
+        const userInfo = {
+            sub: decodedToken.sub,
+            role: decodedToken.role
+        };
+        return userInfo;
     }
     return null;
-  }
+}
+
 
   getUserDetailsById(userId: string): Observable<any> {
     console.log("Getting user details for:", userId);
@@ -100,12 +101,13 @@ currentUserId(): string | null {
   return userInfo ? userInfo.sub : null;
 }
 isAdmin(): boolean {
-  const token = this.getUserInfoFromToken();
-  if (token && token.roles && token.roles.indexOf('admin') !== -1) {
+  const tokenInfo = this.getUserInfoFromToken();
+  if (tokenInfo && tokenInfo.role && tokenInfo.role === 'ADMIN') {
       return true;
   }
   return false;
 }
+
 
 
 

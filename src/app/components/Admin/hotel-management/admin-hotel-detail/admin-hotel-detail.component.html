@@ -1,1 +1,7 @@
-<p>admin-hotel-detail works!</p>
+<h2>Dettagli Hotel</h2>
+<div *ngIf="hotel">
+  <p><strong>Nome:</strong> {{ hotel.nome }}</p>
+  <p><strong>Indirizzo:</strong> {{ hotel.indirizzo }}</p>
+  <p><strong>Descrizione:</strong> {{ hotel.descrizione }}</p>
+  <p><strong>Stelle:</strong> {{ hotel.stelle }}</p>
+</div>
