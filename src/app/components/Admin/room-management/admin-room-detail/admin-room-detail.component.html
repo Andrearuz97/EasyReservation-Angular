@@ -1,1 +1,18 @@
-<p>admin-room-detail works!</p>
+<div class="room-detail-card" *ngIf="roomDetail">
+  <div class="room-image">
+    <img [src]="roomDetail.imageUrl" alt="Foto della stanza">
+  </div>
+
+  <div class="room-info">
+    <h2>Dettagli della Stanza {{ roomDetail.numeroStanza }}</h2>
+    <p><strong>ID:</strong> {{ roomDetail.id }}</p>
+    <p><strong>Tipo:</strong> {{ roomDetail.tipo }}</p>
+    <p><strong>Prezzo:</strong> {{ roomDetail.prezzo | currency:'EUR' }}</p>
+    <h3>Informazioni Hotel</h3>
+    <p><strong>Nome:</strong> {{ roomDetail.hotel.nome }}</p>
+    <p><strong>Indirizzo:</strong> {{ roomDetail.hotel.indirizzo }}</p>
+    <p><strong>Descrizione:</strong> {{ roomDetail.hotel.descrizione }}</p>
+    <p><strong>Stelle:</strong> {{ roomDetail.hotel.stelle }}</p>
+    <button class="btn btn-primary mt-3" (click)="goToEdit()">Modifica Stanza</button>
+  </div>
+</div>

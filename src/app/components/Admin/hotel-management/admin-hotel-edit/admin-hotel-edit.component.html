@@ -1,29 +1,33 @@
-<h2 *ngIf="hotel.id">Modifica Hotel</h2>
-<h2 *ngIf="!hotel.id">Crea Hotel</h2>
+<div class="hotel-edit-container">
+  <h2 *ngIf="hotel.id">Modifica Hotel</h2>
+  <h2 *ngIf="!hotel.id">Crea Hotel</h2>
 
-<form>
-  <div>
-    <label>Nome:</label>
-    <input [(ngModel)]="hotel.nome" name="nome">
-  </div>
-  <div>
-    <label>Indirizzo:</label>
-    <input [(ngModel)]="hotel.indirizzo" name="indirizzo">
-  </div>
-  <div>
-    <label>Descrizione:</label>
-    <input [(ngModel)]="hotel.descrizione" name="descrizione">
-  </div>
-  <div>
-    <label>Stelle:</label>
-    <input type="number" [(ngModel)]="hotel.stelle" name="stelle">
-  </div>
-  <div>
-    <label>URL dell'immagine:</label>
-    <input [(ngModel)]="hotel.imageUrl" name="imageUrl" placeholder="Inserisci l'URL dell'immagine dell'hotel">
-  </div>
-  <div *ngIf="hotel.imageUrl">
-    <img [src]="hotel.imageUrl" alt="Foto dell'hotel" style="width: 200px; height: auto;">
-  </div>
-  <button (click)="saveHotel()">{{ hotel.id ? 'Aggiorna' : 'Crea' }}</button>
-</form>
+  <form class="hotel-form">
+    <div class="form-group">
+      <label>Nome:</label>
+      <input class="form-input" [(ngModel)]="hotel.nome" name="nome">
+    </div>
+    <div class="form-group">
+      <label>Indirizzo:</label>
+      <input class="form-input" [(ngModel)]="hotel.indirizzo" name="indirizzo">
+    </div>
+    <div class="form-group">
+      <label>Descrizione:</label>
+      <input class="form-input" [(ngModel)]="hotel.descrizione" name="descrizione">
+    </div>
+    <div class="form-group">
+      <label>Stelle:</label>
+      <input type="number" class="form-input" [(ngModel)]="hotel.stelle" name="stelle">
+    </div>
+    <div class="form-group">
+      <label>URL dell'immagine:</label>
+      <input class="form-input" [(ngModel)]="hotel.imageUrl" name="imageUrl" placeholder="Inserisci l'URL dell'immagine dell'hotel">
+    </div>
+    <div class="image-preview" *ngIf="hotel.imageUrl">
+      <img [src]="hotel.imageUrl" alt="Foto dell'hotel">
+    </div>
+    <div class="form-action">
+      <button class="save-btn" (click)="saveHotel()">{{ hotel.id ? 'Aggiorna' : 'Crea' }}</button>
+    </div>
+  </form>
+</div>

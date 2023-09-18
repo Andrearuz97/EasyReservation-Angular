@@ -1,7 +1,12 @@
-<h2>Dettagli Hotel</h2>
-<div *ngIf="hotel">
-  <p><strong>Nome:</strong> {{ hotel.nome }}</p>
-  <p><strong>Indirizzo:</strong> {{ hotel.indirizzo }}</p>
-  <p><strong>Descrizione:</strong> {{ hotel.descrizione }}</p>
-  <p><strong>Stelle:</strong> {{ hotel.stelle }}</p>
+<div class="hotel-detail-container" *ngIf="hotel">
+  <div class="hotel-image">
+    <img [src]="hotel.imageUrl" alt="Foto dell'hotel">
+  </div>
+
+  <div class="hotel-content">
+    <h2>{{ hotel.nome }}</h2>
+    <p class="address">{{ hotel.indirizzo }}</p>
+    <p class="description">{{ hotel.descrizione }}</p>
+    <p class="stars">Stelle: {{ '⭐'.repeat(hotel.stelle) }}</p>
+  </div>
 </div>

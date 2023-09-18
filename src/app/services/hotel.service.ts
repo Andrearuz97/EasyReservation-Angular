@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Hotel } from '../models/hotel.model';
+import { Room } from '../models/room.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -32,4 +33,5 @@ export class HotelService {
   deleteHotel(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}hotel/${id}`);
   }
+
 }

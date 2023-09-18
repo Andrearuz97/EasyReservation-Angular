@@ -1,1 +1,37 @@
-<p>admin-room-edit works!</p>
+<h2>{{ room?.id ? 'Modifica Stanza' : 'Crea Stanza' }}</h2>
+
+<div *ngIf="room">
+  <div class="form-group">
+    <label for="numeroStanza">Numero Stanza</label>
+    <input type="number" class="form-control" id="numeroStanza" [(ngModel)]="room.numeroStanza">
+  </div>
+
+  <div class="form-group">
+    <label for="tipo">Tipo Stanza</label>
+    <select class="form-control" id="tipo" [(ngModel)]="room.tipo">
+        <option *ngFor="let type of roomTypes" [value]="type">{{type}}</option>
+    </select>
+</div>
+
+
+  <div class="form-group">
+    <label for="prezzo">Prezzo</label>
+    <input type="number" class="form-control" id="prezzo" [(ngModel)]="room.prezzo">
+  </div>
+
+  <div class="form-group">
+    <label for="imageUrl">URL Foto Stanza</label>
+    <input type="text" class="form-control" id="imageUrl" [(ngModel)]="room.imageUrl">
+</div>
+
+
+
+  <div class="form-group">
+    <label for="hotel">Hotel</label>
+    <select class="form-control" id="hotel" [(ngModel)]="room.hotel.id">
+      <option *ngFor="let hotel of hotels" [value]="hotel.id">{{hotel.nome}}</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary" (click)="saveRoom()">{{ room.id ? 'Salva Modifiche' : 'Crea Stanza' }}</button>
+</div>

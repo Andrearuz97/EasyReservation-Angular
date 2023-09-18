@@ -3,6 +3,7 @@ export interface Room {
   numeroStanza: number;
   tipo: string;
   prezzo: number;
+  imageUrl?: string;
   hotel: {
     id: number;
     nome: string;

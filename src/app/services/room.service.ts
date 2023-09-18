@@ -14,21 +14,28 @@ export class RoomService {
 
   constructor(private http: HttpClient) { }
 
-  getRooms(): Observable<Room[]> {
-    return this.http.get<Room[]>(`${this.baseUrl}stanze/hotel`);
-  }
 
   getRoomByHotelAndRoomId(hotelId: number, roomId: number): Observable<Room> {
     return this.http.get<Room>(`${this.baseUrl}stanze/hotel/${hotelId}/${roomId}`);
-  }
+}
 
 
 
   getRoomsByHotelId(hotelId: number): Observable<Room[]> {
     return this.http.get<Room[]>(`${this.baseUrl}stanze/hotel/${hotelId}`);
-}
+  }
 
 
+  addRoomToHotel(hotelId: number, room: Room): Observable<Room> {
+    return this.http.post<Room>(`${this.baseUrl}stanze/hotel/${hotelId}`, room);
+  }
 
-  // Altri metodi CRUD come addRoom, updateRoom, deleteRoom.
+  updateRoomInHotel(hotelId: number, roomId: number, room: Room): Observable<Room> {
+    return this.http.put<Room>(`${this.baseUrl}stanze/hotel/${hotelId}/${roomId}`, room);
+  }
+
+  deleteRoomFromHotel(hotelId: number, roomId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}stanze/hotel/${hotelId}/${roomId}`);
+  }
+
 }

@@ -1,25 +1,31 @@
-<h2>Elenco Hotel</h2>
-<button (click)="navigateToAddHotel()">Aggiungi Hotel</button>
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Indirizzo</th>
-      <th>Descrizione</th>
-      <th>Stelle</th>
-      <th>Azioni</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let hotel of hotels">
-      <td><a [routerLink]="['/admin/hotels', hotel.id]">{{ hotel.nome }}</a></td>
-      <td>{{ hotel.indirizzo }}</td>
-      <td>{{ hotel.descrizione }}</td>
-      <td>{{ hotel.stelle }}</td>
-      <td>
-        <a [routerLink]="['/admin/hotels/edit', hotel.id]">Modifica</a> |
-        <button (click)="deleteHotel(hotel.id)">Elimina</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="hotel-list-container">
+  <div class="list-header">
+    <h2>Elenco Hotel</h2>
+    <button class="add-btn" (click)="navigateToAddHotel()">Aggiungi Hotel</button>
+  </div>
+  <table class="hotel-list-table">
+    <thead>
+      <tr>
+        <th>Foto</th>
+        <th>Nome</th>
+        <th>Indirizzo</th>
+        <th>Descrizione</th>
+        <th>Stelle</th>
+        <th>Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hotel of hotels">
+        <td><img [src]="hotel.imageUrl" alt="Foto dell'hotel" class="hotel-img"></td>
+        <td><a [routerLink]="['/admin/hotels', hotel.id]">{{ hotel.nome }}</a></td>
+        <td>{{ hotel.indirizzo }}</td>
+        <td>{{ hotel.descrizione }}</td>
+        <td>{{ '⭐'.repeat(hotel.stelle) }}</td>
+        <td>
+          <a [routerLink]="['/admin/hotels/edit', hotel.id]" class="edit-btn">Modifica</a> |
+          <button class="delete-btn" (click)="deleteHotel(hotel.id)">Elimina</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

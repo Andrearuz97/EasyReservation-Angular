@@ -1,1 +1,44 @@
-<p>admin-room-list works!</p>
+<div class="room-management-container">
+
+  <h2>Gestione stanze</h2>
+
+  <div class="form-group">
+    <label for="selectedHotel">Seleziona Hotel:</label>
+    <select id="selectedHotel" class="form-control" [(ngModel)]="selectedHotelId" (change)="loadRooms(selectedHotelId)">
+      <option *ngFor="let hotel of hotels" [value]="hotel.id">{{ hotel.nome }}</option>
+    </select>
+  </div>
+
+  <div class="room-table-container">
+    <table class="table room-table">
+      <thead>
+        <tr>
+          <th>Numero Stanza</th>
+          <th>Tipo</th>
+          <th>Prezzo</th>
+          <th>Foto</th>
+          <th>Azioni</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of rooms">
+          <td>{{ room.numeroStanza }}</td>
+          <td>{{ room.tipo }}</td>
+          <td>{{ room.prezzo }}</td>
+          <td>
+            <img *ngIf="room.imageUrl" [src]="room.imageUrl" alt="Foto della stanza" class="room-image">
+          </td>
+          <td>
+            <button class="btn btn-info" (click)="viewDetails(room.id)">Dettagli</button>
+            <a [routerLink]="['/admin/rooms/edit', selectedHotelId, room.id]" class="btn btn-warning">Modifica</a>
+            <button class="btn btn-danger" (click)="confirmAndDelete(room.id)">Elimina</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="create-room-btn-container">
+    <button class="btn btn-primary" (click)="createNewRoom()">Crea Nuova Stanza</button>
+  </div>
+</div>

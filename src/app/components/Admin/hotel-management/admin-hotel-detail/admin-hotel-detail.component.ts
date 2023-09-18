@@ -24,10 +24,13 @@ export class AdminHotelDetailComponent implements OnInit {
     if (idStr) {
         const id = +idStr;
         this.hotelService.getHotelById(id).subscribe((data: Hotel) => {
-            this.hotel = data;
-        });
-    } else {
-console.error("error")    }
+          this.hotel = data;
+        },
+        error => {
+          console.error("Errore nel recuperare i dettagli dell'hotel:", error);
+        }
+      );
+  }
 
   }
 }
