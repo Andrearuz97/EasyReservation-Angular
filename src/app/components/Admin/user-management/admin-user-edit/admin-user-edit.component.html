@@ -1,1 +1,34 @@
-<p>admin-user-edit works!</p>
+<div class="container mt-5">
+  <h2 class="mb-4">Modifica Prenotazione</h2>
+
+  <form *ngIf="booking">
+    <div class="form-group">
+      <label for="dataCheckIn">Data Check-In</label>
+      <input type="date" id="dataCheckIn" name="dataCheckIn" class="form-control" [(ngModel)]="booking.dataCheckIn">
+    </div>
+
+    <div class="form-group">
+      <label for="dataCheckOut">Data Check-Out</label>
+      <input type="date" id="dataCheckOut" name="dataCheckOut" class="form-control" [(ngModel)]="booking.dataCheckOut">
+    </div>
+
+    <div class="form-group">
+      <label for="hotelId">Hotel</label>
+      <select id="hotelId" name="hotelId" class="form-control" [(ngModel)]="booking.hotel.id" (change)="loadRooms(booking.hotel.id)">
+        <option *ngFor="let hotel of hotels" [ngValue]="hotel.id">{{ hotel.nome }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="stanzaId">Numero Stanza</label>
+      <select id="stanzaId" name="stanzaId" class="form-control" [(ngModel)]="booking.stanza.id">
+        <option *ngFor="let room of rooms" [ngValue]="room.id">{{ room.id }}</option>
+      </select>
+    </div>
+
+    <button class="btn btn-success" (click)="updateBooking()">Aggiorna</button>
+    <button class="btn btn-danger" (click)="cancel()">Annulla</button>
+  </form>
+
+  <button class="btn btn-secondary" (click)="goBack()">Indietro</button>
+</div>

@@ -22,18 +22,19 @@ const routes: Routes = [
       { path: '', redirectTo: 'overview', pathMatch: 'full' },
       { path: 'overview', component: OverviewComponent },
       { path: 'hotels', component: AdminHotelListComponent },
-      { path: 'hotels/edit', component: AdminHotelEditComponent },
-      { path: 'hotels/edit/:id', component: AdminHotelEditComponent },
       { path: 'hotels/new', component: AdminHotelEditComponent },
+      { path: 'hotels/edit/:id', component: AdminHotelEditComponent },
+      { path: 'hotels/edit', component: AdminHotelEditComponent },
       { path: 'hotels/:id', component: AdminHotelDetailComponent },
       { path: 'hotels/:id/rooms', component: AdminRoomListComponent},
       { path: 'rooms', component: AdminRoomListComponent },
       { path: 'rooms/edit/:id', component: AdminRoomEditComponent },
       { path: 'rooms/edit/:hotelId/:roomId', component: AdminRoomEditComponent },
       { path: 'hotels/:hotelId/rooms/:id', component: AdminRoomDetailComponent },
-      { path: 'users', component: AdminUserListComponent },
       { path: 'users/edit/:id', component: AdminUserEditComponent },
       { path: 'users/:id', component: AdminUserDetailComponent },
+      { path: 'users', component: AdminUserListComponent },
+
     ]
   }
 ];

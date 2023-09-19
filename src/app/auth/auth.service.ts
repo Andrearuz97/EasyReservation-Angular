@@ -7,7 +7,7 @@ import { BehaviorSubject, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
-
+import { User } from '../models/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -92,10 +92,19 @@ export class AuthService {
 }
 
 
-  getUserDetailsById(userId: string): Observable<any> {
-    console.log("Getting user details for:", userId);
-    return this.http.get<any>(`${this.baseURL}users/${userId}`);
+getUserDetailsById(userId: string): Observable<any> {
+  console.log("Getting user details for:", userId);
+  return this.http.get<any>(`${this.baseURL}users/${userId}`).pipe(
+    tap(response => {
+        console.log('User details response:', response);
+    }),
+    catchError(err => {
+        console.error('Error in getUserDetailsById:', err);
+        return throwError(err);
+    })
+  );
 }
+
 currentUserId(): string | null {
   const userInfo = this.getUserInfoFromToken();
   return userInfo ? userInfo.sub : null;
@@ -107,6 +116,10 @@ isAdmin(): boolean {
   }
   return false;
 }
+getUsers(): Observable<User[]> {
+  return this.http.get<User[]>(`${this.baseURL}users`);
+}
+
 
 
 

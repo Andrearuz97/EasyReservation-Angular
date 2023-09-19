@@ -1,5 +1,6 @@
 import { Room } from "./room.interface";
 import { User } from "./user.interface";
+import { Hotel } from "./hotel.model";
 
 export interface Reservation {
   id: number;
@@ -7,4 +8,5 @@ export interface Reservation {
   dataCheckOut: Date;
   utente: User;
   stanza: Room;
+  hotel: Hotel;
 }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Reservation } from '../models/reservation.interface';
 import { Room } from '../models/room.interface';
+import { tap, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +23,27 @@ export class ReservationService {
   }
 
   getPrenotazioniByUserId(userId: string): Observable<Reservation[]> {
-    return this.http.get<Reservation[]>(`${this.baseUrl}prenotazioni/user/${userId}`);
-  }
+    console.log("Fetching reservations for user:", userId);
+    return this.http.get<Reservation[]>(`${this.baseUrl}prenotazioni/user/${userId}`).pipe(
+      tap(response => {
+          console.log('Reservations response:', response);
+      }),
+      catchError(err => {
+          console.error('Error in getPrenotazioniByUserId:', err);
+          return throwError(err);
+      })
+    );
+}
+
   deletePrenotazione(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}prenotazioni/${id}`);
   }
 
   updatePrenotazione(id: number, data: any): Observable<any> {
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+
     return this.http.put(`${this.baseUrl}prenotazioni/${id}`, data);
   }
   getAvailableRoomsByHotelId(hotelId: number): Observable<Room[]> {

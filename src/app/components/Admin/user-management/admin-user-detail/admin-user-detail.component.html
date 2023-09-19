@@ -1,1 +1,27 @@
-<p>admin-user-detail works!</p>
+<div *ngIf="user">
+  <h3>Dettagli Utente</h3>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><strong>ID:</strong></td>
+        <td>{{ user.idUser }}</td>
+      </tr>
+      <tr>
+        <td><strong>Nome:</strong></td>
+        <td>{{ user.name }}</td>
+      </tr>
+      <tr>
+        <td><strong>Cognome:</strong></td>
+        <td>{{ user.surname }}</td>
+      </tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="!user">
+  <p>Caricamento dettagli utente...</p>
+</div>
