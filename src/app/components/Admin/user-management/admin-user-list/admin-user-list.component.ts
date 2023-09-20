@@ -61,10 +61,10 @@ export class AdminUserListComponent implements OnInit {
     });
 }
 
-
-editBooking(bookingId: number): void {
-  this.router.navigate(['/admin/users/edit', bookingId]);
+editBooking(reservationId: number, hotelId: number): void {
+  this.router.navigate(['/admin/users/edit', reservationId], { queryParams: { hotelId: hotelId } });
 }
+
 
 
 

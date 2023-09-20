@@ -40,12 +40,9 @@ export class ReservationService {
   }
 
   updatePrenotazione(id: number, data: any): Observable<any> {
-    const headers = {
-      'Content-Type': 'application/json',
-    };
-
-    return this.http.put(`${this.baseUrl}prenotazioni/${id}`, data);
+  return this.http.put(`${this.baseUrl}prenotazioni/${id}`, data);
   }
+
   getAvailableRoomsByHotelId(hotelId: number): Observable<Room[]> {
     return this.http.get<Room[]>(`${this.baseUrl}stanze/hotel/${hotelId}`);
   }

@@ -15,7 +15,7 @@
 .card-img-top {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  height: 250px;
+  height: 550px;
   object-fit: cover;
 }
 
@@ -56,4 +56,10 @@
 
 .mt-4 {
   margin-top: 30px !important;
+}
+.room-thumbnail {
+  width: 200px;
+  height: auto;
+  margin-right: 20px;
+  float: left;
 }

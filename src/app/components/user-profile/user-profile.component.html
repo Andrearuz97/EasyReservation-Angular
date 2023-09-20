@@ -4,8 +4,8 @@
   </div>
   <div class="profile-details">
     <p><strong>Email:</strong> {{ utente.email }}</p>
-    <p *ngIf="utente.phone"><strong>Telefono:</strong> {{ utente.phone }}</p>
-    <p *ngIf="utente.dateOfBirth"><strong>Data di Nascita:</strong> {{ utente.dateOfBirth | date }}</p>
+    <p><strong>Nome:</strong> {{ utente.name }}</p>
+    <p><strong>cognome:</strong> {{ utente.surname }}</p>
     <p *ngIf="utente.address"><strong>Indirizzo:</strong> {{ utente.address }}</p>
   </div>
 </div>

@@ -30,16 +30,17 @@
     <tbody>
         <tr *ngFor="let booking of selectedUserBookings">
             <td>{{ booking.id }}</td>
-            <td>{{ booking.dataCheckIn | date:'short' }}</td>
-            <td>{{ booking.dataCheckOut | date:'short' }}</td>
+            <td>{{ booking.dataCheckIn | date:'dd/MM/yyyy' }}</td>
+            <td>{{ booking.dataCheckOut | date:'dd/MM/yyyy' }}</td>
+
             <td>{{ booking.stanza.numeroStanza }}</td>
             <td>{{ booking.stanza.tipo }}</td>
             <td>{{ booking.stanza.prezzo | currency:'EUR' }}</td>
             <td>{{ booking.stanza.hotel.nome }}</td>
             <td>{{ booking.stanza.hotel.indirizzo }}</td>
             <td>
-                <button class="btn btn-info" (click)="editBooking(booking.id)">Modifica</button>
-                <button class="btn btn-danger" (click)="deleteBooking(booking.id)">Elimina</button>
+              <button class="btn btn-info" (click)="editBooking(booking.id, booking.stanza.hotel.id)">Modifica</button>
+              <button class="btn btn-danger" (click)="deleteBooking(booking.id)">Elimina</button>
             </td>
         </tr>
     </tbody>

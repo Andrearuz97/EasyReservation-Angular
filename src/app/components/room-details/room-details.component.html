@@ -1,4 +1,6 @@
 <div class="container mt-5" *ngIf="room">
+  <img *ngIf="room.imageUrl" [src]="room.imageUrl" alt="Immagine della stanza" class="room-thumbnail">
+
   <h2>Stanza n. {{room.numeroStanza}}</h2>
   <p><strong>Tipo:</strong> {{room.tipo}}</p>
   <p><strong>Prezzo per notte:</strong> {{room.prezzo | currency:'EUR':'symbol'}}</p>

@@ -5,6 +5,7 @@ import { HotelService } from 'src/app/services/hotel.service';
 import { Room } from 'src/app/models/room.interface';
 import { Hotel } from 'src/app/models/hotel.model';
 import { TipoStanza } from 'src/app/models/tipo-stanza.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-room-edit',
@@ -20,7 +21,8 @@ export class AdminRoomEditComponent implements OnInit {
   constructor(
     private roomService: RoomService,
     private hotelService: HotelService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +70,7 @@ export class AdminRoomEditComponent implements OnInit {
       if (this.room.id) {
         this.roomService.updateRoomInHotel(hotelId, this.room.id, this.room).subscribe(updatedRoom => {
           alert('Stanza aggiornata con successo!');
+          this.router.navigate(['/admin/rooms'])
         });
       } else {
         this.roomService.addRoomToHotel(hotelId, this.room).subscribe(newRoom => {

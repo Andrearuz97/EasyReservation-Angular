@@ -120,6 +120,15 @@ getUsers(): Observable<User[]> {
   return this.http.get<User[]>(`${this.baseURL}users`);
 }
 
+updateUserById(userId: string, updatedUser: any): Observable<any> {
+  return this.http.put(`${this.baseURL}users/${userId}`, updatedUser);
+}
+
+deleteUserById(userId: string): Observable<any> {
+  return this.http.delete(`${this.baseURL}users/${userId}`);
+}
+
+
 
 
 
