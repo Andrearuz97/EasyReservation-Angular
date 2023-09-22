@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.interface';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +9,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  userDetails: User | null = null;
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.user$.subscribe((authData) => {
+        if (authData) {
+            const userId = this.authService.currentUserId();
+            if (userId) {
+                this.authService.getUserDetailsById(userId).subscribe(data => {
+                    this.userDetails = data;
+                });
+            }
+        } else {
+            this.userDetails = null;
+        }
+    });
+}
+
+
+
 
   isUserLoggedIn(): boolean {
     return this.authService.getUserDetails() !== null;

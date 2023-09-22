@@ -1,34 +1,110 @@
-<div class="header">
-  <h1>Benvenuti al nostro sito!</h1>
-  <p>Offriamo i migliori servizi di prenotazione alberghiera.</p>
+<!-- Header Section -->
+<div class="header jumbotron text-white text-center ">
+  <h1>Benvenuto su EasyReservation!</h1>
+  <h4 class="pb-2">Da noi troverai i migliori servizi di prenotazione alberghiera.</h4>
 </div>
 
-<section class="intro">
-  <h2>Chi siamo?</h2>
-  <p>Siamo una piattaforma leader nel settore alberghiero, con anni di esperienza e migliaia di clienti soddisfatti.</p>
-</section>
+<!-- Carousel degli hotel -->
+<section class="hotels py-5">
+  <div class="container">
+    <h2 class="mb-5 text-center">Esplora i nostri hotel!</h2>
+<!-- CTA Section -->
+<section *ngIf="!isLoggedIn"class="cta py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">Risorse limitate, accedi o registrati per saperne di più!</h2>
+    <!-- Mostra solo se l'utente NON è registrato -->
+    <button class="btn btn-warning mb-2 btn-lg mr-2 me-2" routerLink="/register">Registrati ora</button>
+    <button class="btn btn-success btn-lg ms-2" routerLink="/login">Accedi</button>
 
-<section class="services">
-  <h2>I nostri servizi</h2>
-  <div class="service-card">
-      <h3>Prenotazione facile</h3>
-      <p>Prenota in pochi clic e ottieni la conferma istantanea.</p>
-  </div>
-  <div class="service-card">
-      <h3>Vasta selezione di hotel</h3>
-      <p>Scegli tra migliaia di hotel in tutto il paese.</p>
-  </div>
-  <div class="service-card">
-      <h3>Supporto clienti 24/7</h3>
-      <p>Siamo qui per te, in qualsiasi momento.</p>
   </div>
 </section>
-
-<section class="cta">
-  <h2>Unisciti a noi!</h2>
-  <button>Registrati ora</button>
+    <!-- Carousel -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-indicators">
+        <button *ngFor="let hotel of hotels; let i = index" type="button" data-bs-target="#carouselExampleCaptions" [attr.data-bs-slide-to]="i" [class.active]="i == 0" [attr.aria-label]="'Slide ' + (i + 1)"></button>
+      </div>
+      <div class="carousel-inner">
+        <div *ngFor="let hotel of hotels; let isFirst = first" class="carousel-item" [class.active]="isFirst">
+          <img [src]="hotel.imageUrl" class="d-block w-100" [alt]="hotel.nome">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>{{ hotel.nome }}</h5>
+            <p>{{ hotel.descrizione }}</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Precedente</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Successivo</span>
+      </button>
+    </div>
+  </div>
 </section>
 
-<footer class="footer">
-  <p>© {{currentYear}} Il nostro sito di prenotazione. Tutti i diritti riservati.</p>
+
+<!-- Services Section -->
+<section class="services py-5 bg-success text-center">
+  <div class="container">
+    <h2 class="mb-5 text-center">I nostri servizi</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title">Prenotazione facile</h3>
+            <p>Prenota in pochi clic e ottieni la conferma istantanea.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title">Vasta selezione di hotel</h3>
+            <p>Scegli tra migliaia di hotel in tutto il paese.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title">Supporto clienti 24/7</h3>
+            <p>Siamo qui per te, in qualsiasi momento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Introduction Section -->
+<section class="intro py-5">
+  <div class="container text-center">
+    <h2>Chi siamo?</h2>
+    <p class="fs-5">Siamo una piattaforma leader nel settore alberghiero, con anni di esperienza e migliaia di clienti soddisfatti.</p>
+  </div>
+</section>
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer class="footer bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="col-12 text-center mb-3">
+        <p>Partita IVA: IT-123456789</p>
+        <p>Email: <a href="mailto:info@easyreservation.com" class="text-white">info@easyreservation.com</a></p>
+        <p>Telefono: <a href="tel:3403030234" class="text-white">123456789</a></p>
+
+      </div>
+      <div class="col-12 text-center mb-3">
+        <p>© {{currentYear}} EasyReservation tutti i diritti riservati.</p>
+      </div>
+    </div>
+  </div>
 </footer>
+

@@ -1,17 +1,21 @@
 <div class="container mt-5" *ngIf="room">
-  <img *ngIf="room.imageUrl" [src]="room.imageUrl" alt="Immagine della stanza" class="room-thumbnail">
-
-  <h2>Stanza n. {{room.numeroStanza}}</h2>
-  <p><strong>Tipo:</strong> {{room.tipo}}</p>
-  <p><strong>Prezzo per notte:</strong> {{room.prezzo | currency:'EUR':'symbol'}}</p>
-  <h4>Dettagli dell'Hotel</h4>
-  <p><strong>Nome:</strong> {{room.hotel.nome}}</p>
-  <p><strong>Indirizzo:</strong> {{room.hotel.indirizzo}}</p>
-  <p><strong>Descrizione:</strong> {{room.hotel.descrizione}}</p>
-  <p><strong>Stelle:</strong> {{room.hotel.stelle}}</p>
-  <a [routerLink]="['/user-reservation', room.hotel.id, room.id]" class="btn btn-success mt-3">Prenota ora</a>
-
-
-  <a routerLink="/hotels" class="btn btn-primary mt-3">Torna alla lista degli hotel</a>
-
+  <div class="room-header">
+      <img *ngIf="room.imageUrl" [src]="room.imageUrl" alt="Immagine della stanza" class="room-thumbnail">
+      <h2>Stanza n. {{room.numeroStanza}}</h2>
+      <p><strong>Tipo:</strong> {{room.tipo}}</p>
+      <p><strong>Prezzo per notte:</strong> {{room.prezzo | currency:'EUR':'symbol'}}</p>
   </div>
+
+  <div class="hotel-details">
+      <h4>Dettagli dell'Hotel</h4>
+      <p><strong>Nome:</strong> {{room.hotel.nome}}</p>
+      <p><strong>Indirizzo:</strong> {{room.hotel.indirizzo}}</p>
+      <p><strong>Descrizione:</strong> {{room.hotel.descrizione}}</p>
+      <p><strong>Stelle:</strong> <span class="stars">{{ '⭐'.repeat(room.hotel.stelle) }}</span></p>
+  </div>
+
+  <div class="actions">
+      <a [routerLink]="['/user-reservation', room.hotel.id, room.id]" class="btn btn-success mt-3">Prenota ora</a>
+      <a routerLink="/hotels" class="btn btn-primary mt-3">Torna alla lista degli hotel</a>
+  </div>
+</div>

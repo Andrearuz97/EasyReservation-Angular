@@ -34,14 +34,15 @@ export class EditReservationComponent implements OnInit {
       this.reservationService.getPrenotazioneById(+reservationId).subscribe(reservation => {
         this.reservation = reservation;
         this.editForm.setValue({
-          dataCheckIn: reservation.dataCheckIn,
-          dataCheckOut: reservation.dataCheckOut,
+          dataCheckIn: new Date(reservation.dataCheckIn).toISOString().split('T')[0],
+          dataCheckOut: new Date(reservation.dataCheckOut).toISOString().split('T')[0],
           stanzaId: reservation.stanza.id
         });
         this.loadAvailableRooms(reservation.stanza.hotel.id);
       });
     }
   }
+
 
   loadAvailableRooms(hotelId: number): void {
     this.reservationService.getAvailableRoomsByHotelId(hotelId).subscribe(rooms => {

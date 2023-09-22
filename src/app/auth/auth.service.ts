@@ -23,15 +23,23 @@ export class AuthService {
     this.restore();
   }
 
-  login(data: {email: string, password: string}) {
+  login(data: { email: string, password: string }) {
     return this.http.post<Auth>(`${this.baseURL}auth/login`, data).pipe(
-      tap((data) => {
-        this.authSubj.next(data);
-        localStorage.setItem('user', JSON.stringify(data));
-        this.autoLogout(data);
-      })
+        tap((data) => {
+            this.authSubj.next(data);
+            localStorage.setItem('user', JSON.stringify(data));
+            this.autoLogout(data);
+
+            const userId = this.currentUserId();
+            if (userId) {
+                this.getUserDetailsById(userId).subscribe(userDetails => {
+                });
+            }
+        })
     );
-  }
+}
+
+
 
   logout() {
     this.authSubj.next(null);

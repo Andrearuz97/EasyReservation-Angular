@@ -1,50 +1,48 @@
-/* home.component.scss */
-
 .header {
   background-color: #4CAF50;
-  color: white;
-  padding: 40px 0;
-  text-align: center;
 }
 
-.intro,
-.services,
-.cta {
-  padding: 40px 0;
-  text-align: center;
-}
-
-.service-card {
-  background-color: #f4f4f4;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  padding: 20px;
-  display: inline-block;
-  width: calc(33% - 40px);
-
-  h3 {
-      margin-top: 0;
+.intro, .cta {
+  h2 {
+    font-weight: bold;
   }
 }
 
-.cta button {
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.services {
+  .card {
+    transition: transform .2s;
 
-  &:hover {
-      background-color: #45a049;
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    h3 {
+      font-weight: bold;
+    }
+  }
+}
+
+.hotels {
+  .carousel-inner {
+
+    overflow: hidden;
+
+    .carousel-item {
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+      .carousel-caption {
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        left: 10%;
+        bottom: 10%;
+      }
+    }
   }
 }
 
 .footer {
   background-color: #333;
-  color: #f4f4f4;
-  padding: 20px 0;
-  text-align: center;
 }

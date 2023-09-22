@@ -1,11 +1,11 @@
 <div *ngIf="utente" class="profile-container">
   <div class="profile-header">
-    <h2>Profilo di {{ utente.name }} {{utente.surname}}</h2>
+    <h2>Profilo di {{ utente.name }} {{ utente.surname }}</h2>
   </div>
   <div class="profile-details">
     <p><strong>Email:</strong> {{ utente.email }}</p>
     <p><strong>Nome:</strong> {{ utente.name }}</p>
-    <p><strong>cognome:</strong> {{ utente.surname }}</p>
+    <p><strong>Cognome:</strong> {{ utente.surname }}</p>
     <p *ngIf="utente.address"><strong>Indirizzo:</strong> {{ utente.address }}</p>
   </div>
 </div>

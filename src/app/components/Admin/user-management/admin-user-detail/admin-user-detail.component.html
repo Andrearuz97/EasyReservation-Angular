@@ -1,12 +1,25 @@
 <div *ngIf="user">
   <h3>Dettagli Utente</h3>
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><strong>Nome:</strong></td>
+        <td>{{user.name}}</td>
+      </tr>
+      <tr>
+        <td><strong>Cognome:</strong></td>
+        <td>{{user.surname}}</td>
+      </tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td>{{user.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+
   <button (click)="deleteUser()">Elimina Utente</button>
   <button (click)="editing = !editing">Modifica Utente</button>
-
-  <div *ngIf="!editing">
-    <table class="table">
-    </table>
-  </div>
 
   <div *ngIf="editing">
     <h4>Modifica dettagli</h4>

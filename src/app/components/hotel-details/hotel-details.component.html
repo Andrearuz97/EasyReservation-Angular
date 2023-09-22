@@ -9,7 +9,8 @@
       <h3 class="card-title">{{ hotel?.nome }}</h3>
       <p class="card-text"><strong>Descrizione:</strong> {{ hotel?.descrizione }}</p>
       <p class="card-text"><strong>Indirizzo:</strong> {{ hotel?.indirizzo }}</p>
-      <p class="card-text"><strong>Stelle:</strong> {{ hotel?.stelle }} <i class="fas fa-star"></i></p>
+      <p class="card-text"><strong>Stelle:</strong> {{ '⭐'.repeat(hotel?.stelle ?? 0) }}
+      </p>
     </div>
   </div>
 

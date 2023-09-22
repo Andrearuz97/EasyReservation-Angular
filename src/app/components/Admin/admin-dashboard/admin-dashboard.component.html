@@ -1,14 +1,14 @@
-<div class="admin-dashboard">
-  <h1>Pannello di amministrazione</h1>
-  <nav>
-    <ul class="admin-nav">
-      <li><a [routerLink]="['./overview']" routerLinkActive="active">Servizi</a></li>
-      <li><a [routerLink]="['./hotels']" routerLinkActive="active">Gestione Hotel</a></li>
-      <li><a [routerLink]="['./rooms']" routerLinkActive="active">Gestione Stanze</a></li>
-      <li><a [routerLink]="['./users']" routerLinkActive="active">Gestione Utenti & prenotazioni</a></li>
+<div class="admin-dashboard container">
+  <h1 class="text-center my-4">Pannello di amministrazione</h1>
+  <nav class="mb-4">
+    <ul class="admin-nav nav justify-content-center">
+      <li class="nav-item"><a class="nav-link" [routerLink]="['./overview']" routerLinkActive="active">Servizi</a></li>
+      <li class="nav-item"><a class="nav-link" [routerLink]="['./hotels']" routerLinkActive="active">Gestione Hotel</a></li>
+      <li class="nav-item"><a class="nav-link" [routerLink]="['./rooms']" routerLinkActive="active">Gestione Stanze</a></li>
+      <li class="nav-item"><a class="nav-link" [routerLink]="['./users']" routerLinkActive="active">Gestione Utenti & prenotazioni</a></li>
     </ul>
   </nav>
-  <div class="admin-content">
+  <div class="admin-content p-4 bg-white rounded shadow-sm">
     <router-outlet></router-outlet>
   </div>
 </div>
