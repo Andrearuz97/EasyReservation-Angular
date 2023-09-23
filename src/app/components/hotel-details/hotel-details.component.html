@@ -24,11 +24,11 @@
           <h5 class="card-title">Stanza {{ room.numeroStanza }}</h5>
           <img *ngIf="room.imageUrl" [src]="room.imageUrl" alt="Immagine della stanza" class="room-thumbnail">
 
-          <a [routerLink]="['/stanza/hotel', hotelId, room.id]" class="btn btn-primary mt-2">Vedi Dettagli</a>
+          <a [routerLink]="['/stanza/hotel', hotelId, room.id]" class="btn btn-success mt-2">Vedi Dettagli</a>
         </div>
       </div>
     </div>
   </div>
 
-  <a routerLink="/hotels" class="btn btn-secondary mt-3">Torna alla lista degli hotel</a>
+  <a routerLink="/hotels" class="btn btn-primary mb-4">Torna alla lista degli hotel</a>
 </div>

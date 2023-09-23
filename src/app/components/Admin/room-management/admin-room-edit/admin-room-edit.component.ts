@@ -74,6 +74,9 @@ export class AdminRoomEditComponent implements OnInit {
         });
       } else {
         this.roomService.addRoomToHotel(hotelId, this.room).subscribe(newRoom => {
+          alert('Stanza creata con successo!');
+          this.router.navigate(['/admin/rooms']);
+
         });
       }
     }

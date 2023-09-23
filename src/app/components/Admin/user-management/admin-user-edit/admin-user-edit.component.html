@@ -12,16 +12,18 @@
       <input type="date" id="dataCheckOut" formControlName="dataCheckOut" class="form-control">
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-2">
       <label for="stanzaId">Numero Stanza</label>
       <select formControlName="stanzaId">
         <option *ngFor="let room of rooms" [ngValue]="room.id">{{ room.numeroStanza }}</option>
       </select>
     </div>
+<div>
+    <button class="btn btn-success " (click)="updateBooking()">Aggiorna</button>
+    <button class="btn btn-danger ms-1" (click)="cancel()">Annulla</button>
+    <button class="btn btn-primary ms-1" (click)="goBack()">Indietro</button>
 
-    <button class="btn btn-success" (click)="updateBooking()">Aggiorna</button>
-    <button class="btn btn-danger" (click)="cancel()">Annulla</button>
+  </div>
   </form>
 
-  <button class="btn btn-secondary" (click)="goBack()">Indietro</button>
 </div>

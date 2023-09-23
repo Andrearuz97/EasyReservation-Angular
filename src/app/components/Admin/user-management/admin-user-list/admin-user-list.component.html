@@ -2,7 +2,7 @@
   <option value="" disabled selected>Seleziona un utente</option>
   <option *ngFor="let user of allUsers" [value]="user.idUser">{{ user.name }} {{ user.surname }}</option>
 </select>
-<button class="btn btn-primary" [routerLink]="['/admin/users', selectedUserId]"
+<button class="btn btn-primary my-2" [routerLink]="['/admin/users', selectedUserId]"
 [disabled]="!selectedUserId">Visualizza Dettagli Utente</button>
 
 

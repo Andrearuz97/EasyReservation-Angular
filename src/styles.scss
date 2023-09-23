@@ -4,5 +4,9 @@
 body {
   background-color:#E8F5E9;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif !important;
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('assets/bg-hotel.avif');
+  background-size: cover;
+  background-repeat: no-repeat;background-attachment: fixed;
+  background-position: center center;
 }

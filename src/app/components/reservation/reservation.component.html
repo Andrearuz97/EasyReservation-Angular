@@ -9,18 +9,20 @@
   <div class="row">
     <div class="col-md-6 mb-3">
       <div class="form-group">
-        <label for="dataCheckIn">Data di Check-In:</label>
+        <label for="dataCheckIn"><strong>Data di Check-In:</strong></label>
         <input type="date" class="form-control" [(ngModel)]="dataCheckIn" name="dataCheckIn" id="dataCheckIn">
       </div>
     </div>
 
     <div class="col-md-6 mb-3">
       <div class="form-group">
-        <label for="dataCheckOut">Data di Check-Out:</label>
+        <label for="dataCheckOut"><strong>Data di Check-Out:</strong></label>
         <input type="date" class="form-control" [(ngModel)]="dataCheckOut" name="dataCheckOut" id="dataCheckOut">
       </div>
     </div>
   </div>
 
   <button class="btn btn-success mt-3" (click)="prenota()">Conferma Prenotazione</button>
+  <button class="btn btn-danger mt-3 ms-2" (click)="goBackToRoomDetail()">Torna a dettagli Stanza</button>
+
 </div>

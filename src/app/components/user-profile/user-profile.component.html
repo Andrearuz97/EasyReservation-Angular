@@ -1,11 +1,13 @@
 <div *ngIf="utente" class="profile-container">
   <div class="profile-header">
-    <h2>Profilo di {{ utente.name }} {{ utente.surname }}</h2>
+    <h2>Informazini personali</h2>
   </div>
   <div class="profile-details">
-    <p><strong>Email:</strong> {{ utente.email }}</p>
     <p><strong>Nome:</strong> {{ utente.name }}</p>
     <p><strong>Cognome:</strong> {{ utente.surname }}</p>
-    <p *ngIf="utente.address"><strong>Indirizzo:</strong> {{ utente.address }}</p>
+    <p><strong>Indirizzo:</strong> {{ utente.indirizzo }}</p>
+    <p><strong>Email:</strong> {{ utente.email }}</p>
+    <p><strong>Telefono:</strong> {{ utente.telefono }}</p>
+
   </div>
 </div>

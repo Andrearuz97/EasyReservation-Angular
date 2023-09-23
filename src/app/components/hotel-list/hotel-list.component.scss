@@ -1,7 +1,8 @@
-.container {
-  font-family: 'Arial', sans-serif;
+.paragrafo{
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-
 .custom-card-link {
   text-decoration: none;
   color: inherit;

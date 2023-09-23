@@ -6,6 +6,7 @@ import { HotelService } from 'src/app/services/hotel.service';
 import { RoomService } from 'src/app/services/room.service';
 import { Hotel } from 'src/app/models/hotel.model';
 import { Room } from 'src/app/models/room.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation',
@@ -25,7 +26,8 @@ export class ReservationComponent implements OnInit {
     private hotelService: HotelService,
     private roomService: RoomService,
     private reservationService: ReservationService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -80,7 +82,8 @@ export class ReservationComponent implements OnInit {
       this.reservationService.createPrenotazione(reservationData)
         .subscribe(response => {
           alert('Prenotazione effettuata con successo!');
-        }, error => {
+          this.router.navigate(['/my-reservations']);        },
+           error => {
           alert('Si è verificato un errore durante la prenotazione.');
           console.error(error);
         });
@@ -88,4 +91,11 @@ export class ReservationComponent implements OnInit {
       alert('Per favore, compila tutti i campi.');
     }
   }
+  goBackToRoomDetail(): void {
+    if (this.selectedHotel && this.selectedRoom) {
+      const url = `stanza/hotel/${this.selectedHotel.id}/${this.selectedRoom.id}`;
+      this.router.navigate([url]);
+    }
+  }
+
 }

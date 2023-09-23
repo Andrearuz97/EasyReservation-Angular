@@ -63,4 +63,8 @@ export class EditReservationComponent implements OnInit {
       });
     }
   }
+  goBack() {
+    this.router.navigate(['/my-reservations']);
+  }
+
 }

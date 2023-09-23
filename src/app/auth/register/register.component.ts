@@ -14,7 +14,8 @@ export class RegisterComponent implements OnInit {
   cognome!: string;
   email!: string;
   password!: string;
-
+  telefono!: string;
+  indirizzo!: string;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -24,9 +25,10 @@ export class RegisterComponent implements OnInit {
       name: form.value.name,
       surname: form.value.surname,
       email: form.value.email,
-      password: form.value.password
-  };
-
+      password: form.value.password,
+      telefono: form.value.telefono,
+      indirizzo: form.value.indirizzo
+    };
 
     this.authService.register(userData).subscribe(
       () => {
@@ -42,7 +44,3 @@ export class RegisterComponent implements OnInit {
     );
   }
 }
-
-
-
-
