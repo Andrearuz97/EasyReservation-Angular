@@ -1,28 +1,32 @@
 <div class="container mt-5">
-  <h2 class="mb-4">Prenotazione</h2>
+  <div class="card bg-white shadow">
+    <div class="card-body">
+      <h2 class="mb-4">Prenotazione</h2>
 
-  <div *ngIf="selectedHotel && selectedRoom" class="mb-4">
-    <h4>Hotel selezionato: <span class="text-primary">{{ selectedHotel.nome }}</span></h4>
-    <h5>Stanza selezionata: <span class="text-primary">{{ selectedRoom.numeroStanza }}</span></h5>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <div class="form-group">
-        <label for="dataCheckIn"><strong>Data di Check-In:</strong></label>
-        <input type="date" class="form-control" [(ngModel)]="dataCheckIn" name="dataCheckIn" id="dataCheckIn">
+      <div *ngIf="selectedHotel && selectedRoom" class="mb-4">
+        <h4 class="text-primary">Hotel selezionato: <span class="text-black">{{ selectedHotel.nome }}</span></h4>
+        <h5 class="text-primary">Stanza selezionata: <span class="text-black">{{ selectedRoom.numeroStanza }}</span></h5>
       </div>
-    </div>
 
-    <div class="col-md-6 mb-3">
-      <div class="form-group">
-        <label for="dataCheckOut"><strong>Data di Check-Out:</strong></label>
-        <input type="date" class="form-control" [(ngModel)]="dataCheckOut" name="dataCheckOut" id="dataCheckOut">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+            <label for="dataCheckIn"><strong>Data di Check-In:</strong></label>
+            <input type="date" class="form-control" [(ngModel)]="dataCheckIn" name="dataCheckIn" id="dataCheckIn">
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+            <label for="dataCheckOut"><strong>Data di Check-Out:</strong></label>
+            <input type="date" class="form-control" [(ngModel)]="dataCheckOut" name="dataCheckOut" id="dataCheckOut">
+          </div>
+        </div>
       </div>
+
+      <button class="btn btn-success mt-3 mx-2" (click)="prenota()">Conferma Prenotazione</button>
+      <button class="btn btn-danger mt-3 mx-2" (click)="goBackToRoomDetail()">Torna a dettagli Stanza</button>
+
     </div>
   </div>
-
-  <button class="btn btn-success mt-3" (click)="prenota()">Conferma Prenotazione</button>
-  <button class="btn btn-danger mt-3 ms-2" (click)="goBackToRoomDetail()">Torna a dettagli Stanza</button>
-
 </div>

@@ -39,7 +39,7 @@
             <td>{{ booking.stanza.hotel.nome }}</td>
             <td>{{ booking.stanza.hotel.indirizzo }}</td>
             <td>
-              <button class="btn btn-info" (click)="editBooking(booking.id, booking.stanza.hotel.id)">Modifica</button>
+              <button class="btn btn-info mb-1" (click)="editBooking(booking.id, booking.stanza.hotel.id)">Modifica</button>
               <button class="btn btn-danger" (click)="deleteBooking(booking.id)">Elimina</button>
             </td>
         </tr>

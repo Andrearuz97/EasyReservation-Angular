@@ -1,7 +1,8 @@
 <div class="container mt-5">
   <h2 class="mb-4">Le tue prenotazioni</h2>
 
-  <div class="table-responsive">
+  <!-- Visualizzazione tabella per schermi grandi -->
+  <div class="table-responsive d-none d-md-block">
     <table class="table custom-table">
       <thead>
         <tr>
@@ -27,11 +28,30 @@
           <td>{{ reservation.stanza.tipo }}</td>
           <td>{{ reservation.stanza.hotel.nome }}</td>
           <td>
-            <button class="btn btn-primary mr-2" (click)="editReservation(reservation.id)">Modifica</button>
+            <button class="btn btn-primary me-2" (click)="editReservation(reservation.id)">Modifica</button>
             <button class="btn btn-danger" (click)="deleteReservation(reservation.id)">Cancella</button>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- Visualizzazione card per schermi piccoli -->
+  <div class="d-block d-md-none">
+    <div class="card mb-3" *ngFor="let reservation of reservations">
+      <div class="card-body">
+        <h5 class="card-title">{{ reservation.utente.name }} {{ reservation.utente.surname }}</h5>
+        <p class="card-text">
+          <strong>ID Prenotazione:</strong> {{ reservation.id }}<br>
+          <strong>Data Check-In:</strong> {{ reservation.dataCheckIn | date:'dd-MM-yyyy' }}<br>
+          <strong>Data Check-Out:</strong> {{ reservation.dataCheckOut | date:'dd-MM-yyyy' }}<br>
+          <strong>Numero Stanza:</strong> {{ reservation.stanza.numeroStanza }}<br>
+          <strong>Tipo Stanza:</strong> {{ reservation.stanza.tipo }}<br>
+          <strong>Hotel Associato:</strong> {{ reservation.stanza.hotel.nome }}
+        </p>
+        <button class="btn btn-primary mb-2 mx-1" (click)="editReservation(reservation.id)">Modifica</button>
+        <button class="btn btn-danger mb-2 mx-1" (click)="deleteReservation(reservation.id)">Cancella</button>
+      </div>
+    </div>
   </div>
 </div>

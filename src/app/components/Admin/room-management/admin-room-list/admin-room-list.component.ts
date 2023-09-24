@@ -75,13 +75,21 @@ viewDetails(roomId: number): void {
 
 
 
-  confirmAndDelete(roomId: number): void {
-    if (window.confirm('Sei sicuro di voler eliminare questa stanza?')) {
-      this.roomService.deleteRoomFromHotel(this.selectedHotelId, roomId).subscribe(() => {
-        this.loadRooms(this.selectedHotelId);
-      });
-    }
+confirmAndDelete(roomId: number): void {
+  if (window.confirm('Sei sicuro di voler eliminare questa stanza?')) {
+      this.roomService.deleteRoomFromHotel(this.selectedHotelId, roomId).subscribe(
+          () => {
+              this.loadRooms(this.selectedHotelId);
+              alert("Stanza eliminata con successo");
+          },
+          (error) => {
+              console.error('Error deleting room:', error);
+              alert('Si è verificato un errore durante l\'eliminazione della stanza. Per favore, riprova.');
+          }
+      );
+  }
 }
+
 
 
   goToCreateRoom(): void {

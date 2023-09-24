@@ -25,10 +25,10 @@
       </tr>
     </tbody>
   </table>
-
+<div class="mb-2">
   <button (click)="deleteUser()">Elimina Utente</button>
   <button (click)="editing = !editing">Modifica Utente</button>
-
+</div>
   <div *ngIf="editing">
     <h4>Modifica dettagli</h4>
     <form (ngSubmit)="updateUser()">
@@ -52,7 +52,7 @@
         <label for="indirizzo">Indirizzo:</label>
         <input type="indirizzo" id="indirizzo" [(ngModel)]="user.indirizzo" name="indirizzo">
       </div>
-      <button type="submit">Salva Modifiche</button>
+      <button class="mt-4" type="submit">Salva Modifiche</button>
     </form>
   </div>
 </div>

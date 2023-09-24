@@ -8,9 +8,13 @@
           <div class="card-body">
             <h5 class="card-title">{{ hotel.nome }}</h5>
             <p class="paragrafo card-text">{{ hotel.descrizione }}</p>
-            <p class="card-text"><small class="text-muted">{{ hotel.indirizzo }}</small></p>
-            <p class="stars"> {{ '⭐'.repeat(hotel.stelle) }}</p>
-            <div class="btn btn-primary">Vedi Dettagli</div>
+            <div>
+              <i class="fa-solid fa-location-dot me-2"></i>
+              <span class="card-text"><small class="text-muted">{{ hotel.indirizzo }}</small></span>
+            </div>
+
+            <p class="stars mt-2"> {{ '⭐'.repeat(hotel.stelle) }}</p>
+            <div id="vedi-dettagli" class="btn btn-success">Vedi Dettagli</div>
           </div>
         </div>
       </a>

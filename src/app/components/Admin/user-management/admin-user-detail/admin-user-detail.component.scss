@@ -68,6 +68,13 @@ label {
   width:80px;
 
 }
-button{
+button {
   margin-right: 10px;
+  transition: background-color 0.3s, transform 0.3s;
 }
+
+button:hover {
+  background-color: #ddd;
+  transform: scale(1.05);
+}
+

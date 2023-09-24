@@ -29,7 +29,7 @@
             <img *ngIf="room.imageUrl" [src]="room.imageUrl" alt="Foto della stanza" class="room-image">
           </td>
           <td>
-            <button class="btn btn-info" (click)="viewDetails(room.id)">Dettagli</button>
+            <button class="btn btn-success" (click)="viewDetails(room.id)">Dettagli</button>
             <a [routerLink]="['/admin/rooms/edit', selectedHotelId, room.id]" class="btn btn-warning mx-1">Modifica</a>
             <button class="btn btn-danger" (click)="confirmAndDelete(room.id)">Elimina</button>
           </td>

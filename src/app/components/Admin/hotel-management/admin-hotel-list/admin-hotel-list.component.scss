@@ -46,12 +46,14 @@
 
     .edit-btn {
       color: #007bff;
-      text-decoration: underline;
+      border: none;
+      background: transparent;
       cursor: pointer;
     }
 
     .delete-btn {
       color: #f00;
+      text-decoration: underline;
       border: none;
       background: transparent;
       cursor: pointer;

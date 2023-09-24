@@ -1,5 +1,5 @@
 <!-- Header Section -->
-<div class="header jumbotron text-center py-2">
+<div class="header jumbotron text-center py-4">
   <h1>Benvenuto su EasyReservation!</h1>
   <h4 class="pb-2">Da noi troverai i migliori servizi di prenotazione alberghiera.</h4>
 </div>
@@ -9,15 +9,20 @@
   <div class="container">
     <h2 class="mb-5 text-center">Esplora i nostri hotel!</h2>
 <!-- CTA Section -->
-<section *ngIf="!isLoggedIn"class="cta py-5">
-  <div class="container text-center">
-    <h2 class="mb-4">Risorse limitate, accedi o registrati per saperne di più!</h2>
-    <!-- Mostra solo se l'utente NON è registrato -->
-    <button class="mb-2 btn btn-warning btn-lg me-2" routerLink="/register">Registrati ora</button>
-    <button class="mb-2 btn btn-success btn-lg" routerLink="/login">Accedi</button>
-
+<section *ngIf="!isLoggedIn" class="cta py-5">
+  <div class="container">
+    <div class="card bg-white p-4">
+      <div class="text-center">
+        <h2 class="mb-4">Risorse limitate, accedi o registrati per saperne di più!</h2>
+        <!-- Mostra solo se l'utente NON è registrato -->
+        <button class="mb-2 btn btn-warning btn-lg me-2" routerLink="/register">Registrati ora</button>
+        <button class="mb-2 btn btn-success btn-lg" routerLink="/login">Accedi</button>
+      </div>
+    </div> <!-- Closing card div -->
   </div>
 </section>
+
+
     <!-- Carousel -->
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
       <div class="carousel-indicators">
@@ -46,7 +51,7 @@
 
 
 <!-- Services Section -->
-<section class="services py-5 text-center">
+<section class="services text-center">
   <div class="container">
     <h2 class="mb-5 text-center">I nostri servizi</h2>
     <div class="row">
