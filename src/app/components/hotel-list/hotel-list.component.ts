@@ -10,11 +10,22 @@ import { Hotel } from 'src/app/models/hotel.model';
 export class HotelListComponent implements OnInit {
 
   hotels: Hotel[] = [];
+  nomeRicerca: string = '';
+
 
   constructor(private hotelService: HotelService) { }
 
   ngOnInit(): void {
     this.loadHotels();
+  }
+  cercaHotel(): void {
+    if (this.nomeRicerca) {
+      this.hotelService.ricercaHotelPerNome(this.nomeRicerca).subscribe(data => {
+        this.hotels = data;
+      });
+    } else {
+      this.loadHotels();
+    }
   }
 
   loadHotels(): void {

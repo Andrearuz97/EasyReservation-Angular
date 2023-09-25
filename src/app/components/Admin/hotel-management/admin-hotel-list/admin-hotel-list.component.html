@@ -22,7 +22,7 @@
         <td>{{ hotel.descrizione }}</td>
         <td>{{ '⭐'.repeat(hotel.stelle) }}</td>
         <td>
-          <a [routerLink]="['/admin/hotels/edit', hotel.id]" class="edit-btn">Modifica</a>
+        <a [routerLink]="['/admin/hotels/edit', hotel.id]" class="edit-btn">Modifica</a>
           <button class="delete-btn" (click)="deleteHotel(hotel.id)">Elimina</button>
         </td>
       </tr>

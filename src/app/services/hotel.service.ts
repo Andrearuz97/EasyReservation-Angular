@@ -14,6 +14,10 @@ export class HotelService {
 
   constructor(private http: HttpClient) { }
 
+  ricercaHotelPerNome(nome: string): Observable<Hotel[]> {
+    return this.http.get<Hotel[]>(`${this.baseUrl}hotel/search?nome=${nome}`);
+  }
+
   getHotels(): Observable<any> {
     return this.http.get(`${this.baseUrl}hotel`);
   }

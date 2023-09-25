@@ -68,13 +68,36 @@ label {
   width:80px;
 
 }
-button {
+#delete {
   margin-right: 10px;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: 0.3s ease, transform 0.3s;
+  background-color: rgb(253, 38, 38);
+  &:hover {
+    background-color: #f80000;
+    transform: scale(1.05);
+  }
+}
+#edit{
+  margin-right: 10px;
+  transition: 0.3s ease, transform 0.3s;
+  background-color: #05deff;
+  &:hover {
+    background-color: #00d3f8;
+    transform: scale(1.05);
+  }
+}
+#save{
+  margin-right: 10px;
+  transition: 0.3s ease, transform 0.3s;
+  background-color: #10cb1c;
+  border:none;
+  color: black;
+  &:hover {
+    background-color: #11b705;
+    transform: scale(1.05);
+  }
 }
 
-button:hover {
-  background-color: #ddd;
-  transform: scale(1.05);
-}
+
+
 
