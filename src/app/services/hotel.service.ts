@@ -21,7 +21,9 @@ export class HotelService {
     });
   }
 
-
+  getAllHotelsPaged(page: number = 0, size: number = 2): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}hotel/paged?page=${page}&size=${size}`);
+  }
 
 
   getHotels(): Observable<any> {

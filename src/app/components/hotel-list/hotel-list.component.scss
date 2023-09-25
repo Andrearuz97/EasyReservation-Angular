@@ -130,5 +130,27 @@
       padding: 5px 10px;
   }
 }
+.pagination .page-link i.fa {
+  color: #4CAF50;
 
+  &:hover {
+    cursor: pointer;
+
+    @media (min-width: 768px) {
+      transform: scale(2);
+    }
+  }
+}
+
+.pagination .page-link {
+  color: black;
+
+  &:hover {
+    cursor: pointer;
+
+    @media (min-width: 768px) {
+      transform: scale(1.2);
+    }
+  }
+}
 

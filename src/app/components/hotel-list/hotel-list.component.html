@@ -2,7 +2,7 @@
   <div class="search-bar mb-4">
     <input class="search-input" [(ngModel)]="searchTerm" placeholder="Cerca hotel per nome o città...">
     <button class="btn-search" (click)="cercaHotel()">Cerca</button>
-</div>
+  </div>
 
   <h2>Lista degli Hotel</h2>
   <div class="row mt-3">
@@ -16,7 +16,7 @@
             <div>
               <i class="fa-solid fa-building me-2"></i>
               <span class="card-text"><small class="text-muted">{{ hotel.citta }}</small></span>
-          </div>
+            </div>
             <div>
               <i class="fa-solid fa-location-dot me-2"></i>
               <span class="card-text"><small class="text-muted">{{ hotel.indirizzo }}</small></span>
@@ -29,4 +29,27 @@
       </a>
     </div>
   </div>
+
+  <div *ngIf="totalPages > 1" class="pagination-container mt-4 d-flex justify-content-center align-items-center">
+    <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 0">
+            <a class="page-link" (click)="changePage(currentPage - 1)">
+                <i class="fa fa-chevron-left"></i>
+            </a>
+        </li>
+
+        <li class="page-item" [class.active]="currentPage === pageIndex" *ngFor="let pageIndex of [].constructor(totalPages); let i = index">
+            <a class="page-link" (click)="changePage(i)">{{ i + 1 }}</a>
+        </li>
+
+        <li class="page-item" [class.disabled]="currentPage === totalPages - 1">
+            <a class="page-link" (click)="changePage(currentPage + 1)">
+                <i class="fa fa-chevron-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+
 </div>

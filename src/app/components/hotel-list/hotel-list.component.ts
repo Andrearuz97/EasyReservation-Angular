@@ -11,12 +11,16 @@ export class HotelListComponent implements OnInit {
 
   hotels: Hotel[] = [];
   searchTerm: string = '';
+  currentPage: number = 0;
+  pageSize: number = 3;
+  totalPages: number = 0;
 
-  constructor(private hotelService: HotelService) { }
+  constructor(private hotelService: HotelService,) { }
 
   ngOnInit(): void {
-    this.loadHotels();
+    this.loadHotelsPaged();
   }
+
   cercaHotel(): void {
     if (this.searchTerm) {
         this.hotelService.ricercaHotel(this.searchTerm).subscribe(data => {
@@ -24,14 +28,19 @@ export class HotelListComponent implements OnInit {
             this.hotels = data;
         });
     } else {
-        this.loadHotels();
+        this.loadHotelsPaged();
     }
-}
+  }
 
-
-  loadHotels(): void {
-    this.hotelService.getHotels().subscribe(data => {
-      this.hotels = data;
+  loadHotelsPaged(): void {
+    this.hotelService.getAllHotelsPaged(this.currentPage, this.pageSize).subscribe(response => {
+      this.hotels = response.content;
+      this.totalPages = response.totalPages;
     });
+  }
+
+  changePage(newPage: number): void {
+    this.currentPage = newPage;
+    this.loadHotelsPaged();
   }
 }
