@@ -80,13 +80,16 @@ export class ReservationComponent implements OnInit {
       };
 
       this.reservationService.createPrenotazione(reservationData)
-        .subscribe(response => {
-          alert('Prenotazione effettuata con successo!');
-          this.router.navigate(['/my-reservations']);        },
-           error => {
-          alert('Si è verificato un errore durante la prenotazione.');
-          console.error(error);
-        });
+    .subscribe({
+        next: response => {
+            alert('Prenotazione effettuata con successo!');
+            this.router.navigate(['/my-reservations']);
+        },
+        error: error => {
+            alert('Si è verificato un errore durante la prenotazione.');
+            console.error(error);
+        }
+    });
     } else {
       alert('Per favore, compila tutti i campi.');
     }

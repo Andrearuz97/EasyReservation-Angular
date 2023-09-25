@@ -99,7 +99,6 @@ confirmAndDelete(roomId: number): void {
 
   openEditModal(room: Room): void {
     this.editingRoom = room;
-    // Qui puoi aprire il tuo modal
   }
 
   updateNumeroStanza(value: number): void {
@@ -109,7 +108,6 @@ confirmAndDelete(roomId: number): void {
   }
 
   onFileChange(event: any): void {
-    // Qui puoi gestire la modifica del file
   }
 
 

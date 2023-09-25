@@ -25,15 +25,19 @@ export class AdminHotelListComponent implements OnInit {
 
   deleteHotel(id: number): void {
     if (confirm('Sei sicuro di voler eliminare questo hotel?')) {
-      this.hotelService.deleteHotel(id).subscribe(() => {
-        alert('Hotel eliminato con successo!');
-        this.fetchHotels();
-      }, (error) => {
-        console.error(error);
-        alert('Errore durante l\'eliminazione dell\'hotel.');
+      this.hotelService.deleteHotel(id).subscribe({
+        next: () => {
+          alert('Hotel eliminato con successo!');
+          this.fetchHotels();
+        },
+        error: error => {
+          console.error(error);
+          alert('Errore durante l\'eliminazione dell\'hotel.');
+        }
       });
     }
   }
+
 
   navigateToAddHotel(): void {
     this.router.navigate(['/admin/hotels/new']);

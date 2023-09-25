@@ -16,20 +16,22 @@
   </div>
 
   <h4 class="mt-4">Stanze disponibili</h4>
-
-  <!-- Lista delle stanze -->
-  <div class="row mt-3">
-    <div class="col-md-4 mb-4" *ngFor="let room of rooms">
+<!-- Lista delle stanze -->
+<div class="row mt-3">
+  <div class="col-md-4 mb-4" *ngFor="let room of rooms">
       <div class="card h-100 shadow">
-        <div class="card-body">
-          <h5 class="card-title">Stanza {{ room.numeroStanza }}</h5>
-          <img *ngIf="room.imageUrl" [src]="room.imageUrl" alt="Immagine della stanza" class="room-thumbnail">
+          <div class="card-body">
+              <h5 class="card-title">Stanza {{ room.numeroStanza }}</h5>
+              <a [routerLink]="['/stanza/hotel', hotelId, room.id]">
+                  <img *ngIf="room.imageUrl" [src]="room.imageUrl" alt="Immagine della stanza" class="room-thumbnail">
+              </a>
 
-          <a [routerLink]="['/stanza/hotel', hotelId, room.id]" id="view-details" class="btn btn-success mt-2">Vedi Dettagli</a>
-        </div>
+              <a [routerLink]="['/stanza/hotel', hotelId, room.id]" id="view-details" class="btn btn-success mt-2">Vedi Dettagli</a>
+          </div>
       </div>
-    </div>
   </div>
+</div>
+
 
   <a routerLink="/hotels" class="btn btn-primary mb-4">Torna alla lista degli hotel</a>
 </div>

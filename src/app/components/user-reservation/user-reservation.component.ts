@@ -16,7 +16,7 @@ export class UserReservationComponent implements OnInit {
   constructor(
     private reservationService: ReservationService,
     private authService: AuthService,
-    private router: Router  // Aggiunto
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,10 +27,13 @@ export class UserReservationComponent implements OnInit {
     const userId = this.authService.currentUserId();
     if (userId) {
       this.reservationService.getPrenotazioniByUserId(userId)
-        .subscribe(data => {
-          this.reservations = data;
-        }, error => {
-          console.error('Errore nel caricamento delle prenotazioni:', error);
+        .subscribe({
+          next: (data: Reservation[]) => {
+            this.reservations = data;
+          },
+          error: (error) => {
+            console.error('Errore nel caricamento delle prenotazioni:', error);
+          }
         });
     }
   }
@@ -39,15 +42,21 @@ export class UserReservationComponent implements OnInit {
     this.router.navigate(['/edit-reservation', reservationId]);
   }
 
-  deleteReservation(reservationId: number) {
+  deleteReservation(reservationId: number): void {
     if (confirm('Sei sicuro di voler cancellare questa prenotazione?')) {
-      this.reservationService.deletePrenotazione(reservationId).subscribe(() => {
-        alert('Prenotazione cancellata con successo!');
-        this.reservations = this.reservations.filter(r => r.id !== reservationId);
-      }, error => {
-        alert('Errore durante la cancellazione della prenotazione!');
-      });
+      this.reservationService.deletePrenotazione(reservationId)
+        .subscribe({
+          next: () => {
+            alert('Prenotazione cancellata con successo!');
+            this.reservations = this.reservations.filter(r => r.id !== reservationId);
+          },
+          error: error => {
+            alert('Errore durante la cancellazione della prenotazione!');
+            console.error('Errore:', error);
+          }
+        });
     }
   }
+
 
 }

@@ -36,35 +36,37 @@ export class AdminUserDetailComponent implements OnInit {
   deleteUser(): void {
     const decision = confirm("Sei sicuro di voler eliminare l'utente selezionato?");
     if (decision) {
-        this.authService.deleteUserById(this.userId).subscribe(
-            () => {
+        this.authService.deleteUserById(this.userId).subscribe({
+            next: () => {
                 console.log("Utente eliminato con successo");
                 alert("Utente eliminato con successo");
-                this.router.navigate(['/admin/users'])
+                this.router.navigate(['/admin/users']);
             },
-            error => {
+            error: error => {
                 console.error('Errore durante l\'eliminazione dell\'utente:', error);
                 alert("Errore durante l'eliminazione dell'utente.");
             }
-        );
+        });
     }
 }
+
 
 editing = false;
 
 updateUser(): void {
-  this.authService.updateUserById(this.userId, this.user).subscribe(
-    () => {
+  this.authService.updateUserById(this.userId, this.user).subscribe({
+    next: () => {
       this.editing = false;
       console.log("Utente aggiornato con successo");
       alert("Utente aggiornato con successo");
     },
-    error => {
+    error: error => {
       console.error('Errore durante l\'aggiornamento dell\'utente:', error);
       alert("Errore durante l'aggiornamento dell'utente.");
     }
-  );
+  });
 }
+
 
 
 

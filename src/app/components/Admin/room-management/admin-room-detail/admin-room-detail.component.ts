@@ -29,18 +29,17 @@ export class AdminRoomDetailComponent implements OnInit {
   }
 
   loadRoomDetails(hotelId: number, roomId: number): void {
-    this.roomService.getRoomByHotelAndRoomId(hotelId, roomId)
-    .subscribe(
-      room => {
+    this.roomService.getRoomByHotelAndRoomId(hotelId, roomId).subscribe({
+      next: room => {
         console.log('Room received:', room);
         this.roomDetail = room;
       },
-      error => {
+      error: error => {
         console.error('Error loading room details:', error);
       }
-  );
-
+    });
   }
+
 
 
   goToEdit(): void {

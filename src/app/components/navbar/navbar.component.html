@@ -33,7 +33,7 @@
       </ul>
       <div *ngIf="isUserLoggedIn()" class="d-flex align-items-center">
           <span *ngIf="userDetails" class="me-3 user-welcome">
-              <strong>Bentornato {{ userDetails.name }} {{ userDetails.surname }}!</strong>
+              <strong>Bentornato/a {{ userDetails.name }} {{ userDetails.surname }}!</strong>
           </span>
           <a href="" class="nav-link custom-logout text-center  me-2" (click)="logout()">Logout</a>
       </div>

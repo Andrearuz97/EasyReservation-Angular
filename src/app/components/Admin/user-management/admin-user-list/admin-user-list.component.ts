@@ -5,6 +5,8 @@ import { Reservation } from 'src/app/models/reservation.interface';
 import { User } from 'src/app/models/user.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { switchMap } from 'rxjs';
+import { forkJoin } from 'rxjs';
 
 
 @Component({
@@ -39,27 +41,34 @@ export class AdminUserListComponent implements OnInit {
   }
 
   selectUser(userId: string): void {
-    console.log('Value from select:', userId);
-    if (!userId) {
-        console.error('User ID is not defined!');
-        return;
-    }
-    this.selectedUserId = userId;
-    this.authService.getUserDetailsById(userId).subscribe(userDetails => {
-      console.log('User details received:', userDetails);
-      this.selectedUserName = `${userDetails.name} ${userDetails.surname}`;
-      this.reservationService.getPrenotazioniByUserId(userId).subscribe(data => {
-        console.log('User bookings received:', data);
-        this.selectedUserBookings = data;
-      },
-      error => {
-          console.error('Error fetching user bookings:', error);
+      console.log('Value from select:', userId);
+      if (!userId) {
+          console.error('User ID is not defined!');
+          return;
+      }
+      this.selectedUserId = userId;
+
+      this.authService.getUserDetailsById(userId).pipe(
+        switchMap(userDetails => {
+          console.log('User details received:', userDetails);
+          this.selectedUserName = `${userDetails.name} ${userDetails.surname}`;
+          return this.reservationService.getPrenotazioniByUserId(userId);
+        })
+      ).subscribe({
+        next: data => {
+          console.log('User bookings received:', data);
+          this.selectedUserBookings = data;
+        },
+        error: error => {
+          if (error.error && error.error.message === 'User not found') {
+            console.error('Error fetching user details:', error);
+          } else {
+            console.error('Error fetching user bookings:', error);
+          }
+        }
       });
-    },
-    error => {
-        console.error('Error fetching user details:', error);
-    });
-}
+  }
+
 
 editBooking(reservationId: number, hotelId: number): void {
   this.router.navigate(['/admin/users/edit', reservationId], { queryParams: { hotelId: hotelId } });
@@ -74,23 +83,26 @@ editBooking(reservationId: number, hotelId: number): void {
     if (confirmDelete) {
       this.reservationService.deletePrenotazione(bookingId).subscribe(() => {
         this.selectedUserBookings = this.selectedUserBookings.filter(booking => booking.id !== bookingId);
+        alert('Prenotazione eliminata con successo.')
       });
     }
   }
   viewUserBookings(): void {
     if (this.selectedUserId) {
-      this.authService.getUserDetailsById(this.selectedUserId).subscribe(userDetails => {
-        this.selectedUserName = `${userDetails.name} ${userDetails.surname}`;
-      });
-      this.reservationService.getPrenotazioniByUserId(this.selectedUserId).subscribe(
-        data => {
-          console.log('Prenotazioni ricevute:', data);
-          this.selectedUserBookings = data;
-        },
-        error => {
-          console.error('Errore nel recupero delle prenotazioni:', error);
-        }
-      );
+
+        forkJoin([
+            this.authService.getUserDetailsById(this.selectedUserId),
+            this.reservationService.getPrenotazioniByUserId(this.selectedUserId)
+        ]).subscribe({
+            next: ([userDetails, bookings]) => {
+                this.selectedUserName = `${userDetails.name} ${userDetails.surname}`;
+                console.log('Prenotazioni ricevute:', bookings);
+                this.selectedUserBookings = bookings;
+            },
+            error: error => {
+                console.error('Errore:', error);
+            }
+        });
 
     }
 }

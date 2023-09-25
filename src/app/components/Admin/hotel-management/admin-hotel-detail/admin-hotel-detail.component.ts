@@ -22,15 +22,16 @@ export class AdminHotelDetailComponent implements OnInit {
   ngOnInit(): void {
     const idStr = this.route.snapshot.paramMap.get('id');
     if (idStr) {
-        const id = +idStr;
-        this.hotelService.getHotelById(id).subscribe((data: Hotel) => {
+      const id = +idStr;
+      this.hotelService.getHotelById(id).subscribe({
+        next: (data: Hotel) => {
           this.hotel = data;
         },
-        error => {
+        error: error => {
           console.error("Errore nel recuperare i dettagli dell'hotel:", error);
         }
-      );
+      });
+    }
   }
 
-  }
 }

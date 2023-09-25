@@ -12,7 +12,7 @@ import { RoomService } from 'src/app/services/room.service';
 export class HotelDetailsComponent implements OnInit {
   hotel: Hotel | undefined;
   rooms: Room[] = [];
-  hotelId!: number; // Aggiungi questa linea
+  hotelId!: number;
 
   constructor(
     private hotelService: HotelService,

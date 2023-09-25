@@ -32,17 +32,20 @@ export class RegisterComponent implements OnInit {
       indirizzo: form.value.indirizzo
     };
 
-    this.authService.register(userData).subscribe(
-      () => {
+    this.authService.register(userData).subscribe({
+      next: () => {
+        alert('Registrazione effettuata con successo!');
         this.router.navigate(['/login']);
       },
-      (error: any) => {
+      error: (error: any) => {
+        alert('Questa e-mail risulta già utilizzata');
         console.error(error);
-        if(error.status == 400) {
-            alert('Questa e-mail risulta già utilizzata');
-            this.router.navigate(['/register']);
+        if (error.status == 400) {
+          this.router.navigate(['/register']);
         }
       }
-    );
+    });
+
+
   }
 }
