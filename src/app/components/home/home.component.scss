@@ -38,7 +38,18 @@
     }
   }
 }
-
 .footer {
   background-color: #333;
+
+  a {
+      display: inline-block;
+      transition: transform .2s;
+
+      &:hover {
+          display: inline-block;
+          transform: translateY(-3px);
+      }
+  }
 }
+
+

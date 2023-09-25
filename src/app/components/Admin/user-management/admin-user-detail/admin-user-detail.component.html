@@ -20,6 +20,10 @@
         <td>{{user.telefono}}</td>
       </tr>
       <tr>
+        <td><strong>Città:</strong></td>
+        <td>{{user.citta}}</td>
+      </tr>
+      <tr>
         <td><strong>Indirizzo:</strong></td>
         <td>{{user.indirizzo}}</td>
       </tr>
@@ -47,6 +51,10 @@
       <div class="form-group">
         <label for="tel">Telefono:</label>
         <input type="tel" id="tel" [(ngModel)]="user.telefono" name="telefono">
+      </div>
+      <div class="form-group">
+        <label for="city">Città:</label>
+        <input type="city" id="city" [(ngModel)]="user.citta" name="city">
       </div>
       <div class="form-group">
         <label for="indirizzo">Indirizzo:</label>

@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   email!: string;
   password!: string;
   telefono!: string;
+  citta!:string;
   indirizzo!: string;
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -27,6 +28,7 @@ export class RegisterComponent implements OnInit {
       email: form.value.email,
       password: form.value.password,
       telefono: form.value.telefono,
+      citta: form.value.citta,
       indirizzo: form.value.indirizzo
     };
 

@@ -7,6 +7,7 @@ export interface Room {
   hotel: {
     id: number;
     nome: string;
+    citta?:string;
     indirizzo: string;
     descrizione: string;
     stelle: number;

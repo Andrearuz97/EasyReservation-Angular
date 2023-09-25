@@ -7,4 +7,5 @@ export interface User {
   role: string;
   telefono: string;
   indirizzo: string;
+  citta:string;
 }

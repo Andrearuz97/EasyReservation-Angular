@@ -8,6 +8,7 @@
       <tr>
         <th>Foto</th>
         <th>Nome</th>
+        <th>Città</th>
         <th>Indirizzo</th>
         <th>Descrizione</th>
         <th>Stelle</th>
@@ -18,6 +19,7 @@
       <tr *ngFor="let hotel of hotels">
         <td><img [src]="hotel.imageUrl" alt="Foto dell'hotel" class="hotel-img"></td>
         <td><a [routerLink]="['/admin/hotels', hotel.id]">{{ hotel.nome }}</a></td>
+        <td>{{ hotel.citta }}</td>
         <td>{{ hotel.indirizzo }}</td>
         <td>{{ hotel.descrizione }}</td>
         <td>{{ '⭐'.repeat(hotel.stelle) }}</td>

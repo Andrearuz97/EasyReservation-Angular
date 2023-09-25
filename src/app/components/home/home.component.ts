@@ -10,8 +10,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class HomeComponent implements OnInit {
   hotels: Hotel[] = [];
-  currentYear: number = new Date().getFullYear();
   isLoggedIn = false;
+  currentYear: number = new Date().getFullYear();
 
   constructor(private hotelService: HotelService, private authService: AuthService) {}
 

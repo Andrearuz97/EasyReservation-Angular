@@ -32,7 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     RoomDetailsComponent,
     UserReservationComponent,
-    EditReservationComponent
+    EditReservationComponent,
   ],
   imports: [
     BrowserModule,
