@@ -10,8 +10,7 @@ import { Hotel } from 'src/app/models/hotel.model';
 export class HotelListComponent implements OnInit {
 
   hotels: Hotel[] = [];
-  nomeRicerca: string = '';
-
+  searchTerm: string = '';
 
   constructor(private hotelService: HotelService) { }
 
@@ -19,14 +18,16 @@ export class HotelListComponent implements OnInit {
     this.loadHotels();
   }
   cercaHotel(): void {
-    if (this.nomeRicerca) {
-      this.hotelService.ricercaHotelPerNome(this.nomeRicerca).subscribe(data => {
-        this.hotels = data;
-      });
+    if (this.searchTerm) {
+        this.hotelService.ricercaHotel(this.searchTerm).subscribe(data => {
+            console.log(data);
+            this.hotels = data;
+        });
     } else {
-      this.loadHotels();
+        this.loadHotels();
     }
-  }
+}
+
 
   loadHotels(): void {
     this.hotelService.getHotels().subscribe(data => {

@@ -38,18 +38,31 @@ export class AdminHotelEditComponent implements OnInit {
   }
 
 
-
   saveHotel(): void {
     if (this.hotel.id) {
-      this.hotelService.updateHotel(this.hotel.id, this.hotel).subscribe(() => {
-        alert('Hotel aggiornato con successo!');
-        this.router.navigate(['/admin/hotels']);
-      });
+        this.hotelService.updateHotel(this.hotel.id, this.hotel).subscribe({
+            next: () => {
+                alert('Hotel aggiornato con successo!');
+                this.router.navigate(['/admin/hotels']);
+            },
+            error: err => {
+                console.error('Errore durante l\'aggiornamento dell\'hotel:', err);
+                alert('Errore durante l\'aggiornamento dell\'hotel. Riprova più tardi.');
+            }
+        });
     } else {
-      this.hotelService.addHotel(this.hotel).subscribe(() => {
-        alert('Hotel creato con successo!');
-        this.router.navigate(['/admin/hotels']);
-      });
+        this.hotelService.addHotel(this.hotel).subscribe({
+            next: () => {
+                alert('Hotel creato con successo!');
+                this.router.navigate(['/admin/hotels']);
+            },
+            error: err => {
+                console.error('Errore durante la creazione dell\'hotel:', err);
+                alert('Errore durante la creazione dell\'hotel. Controlla i dati inseriti.');
+            }
+        });
     }
-  }
+}
+
+
 }
