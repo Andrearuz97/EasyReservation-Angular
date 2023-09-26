@@ -8,6 +8,7 @@ export interface Room {
     id: number;
     nome: string;
     citta?:string;
+    cap?:string;
     indirizzo: string;
     descrizione: string;
     stelle: number;

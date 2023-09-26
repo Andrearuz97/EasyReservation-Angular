@@ -3,6 +3,7 @@ export interface Hotel {
   nome: string;
   citta?:string;
   indirizzo: string;
+  cap?:string;
   descrizione: string;
   stelle: number;
   imageUrl?: string;

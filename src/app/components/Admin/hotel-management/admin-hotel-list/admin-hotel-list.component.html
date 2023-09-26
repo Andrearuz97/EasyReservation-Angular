@@ -10,6 +10,7 @@
         <th>Nome</th>
         <th>Città</th>
         <th>Indirizzo</th>
+        <th>Cap</th>
         <th>Descrizione</th>
         <th>Stelle</th>
         <th>Azioni</th>
@@ -21,6 +22,7 @@
         <td><a [routerLink]="['/admin/hotels', hotel.id]">{{ hotel.nome }}</a></td>
         <td>{{ hotel.citta }}</td>
         <td>{{ hotel.indirizzo }}</td>
+        <td>{{ hotel.cap }}</td>
         <td>{{ hotel.descrizione }}</td>
         <td>{{ '⭐'.repeat(hotel.stelle) }}</td>
         <td>

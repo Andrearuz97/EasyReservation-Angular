@@ -12,7 +12,7 @@ export class HotelListComponent implements OnInit {
   hotels: Hotel[] = [];
   searchTerm: string = '';
   currentPage: number = 0;
-  pageSize: number = 3;
+  pageSize: number = 6;
   totalPages: number = 0;
 
   constructor(private hotelService: HotelService,) { }

@@ -1,30 +1,34 @@
 <div class="container mt-5">
-  <h3 class="mb-4">Modifica la tua prenotazione</h3>
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="dataCheckIn">Data Check-In</label>
-          <input type="date" id="dataCheckIn" formControlName="dataCheckIn" class="form-control">
+  <div class="card bg-white shadow">
+    <div class="card-body">
+      <h3 class="mb-4">Modifica la tua prenotazione</h3>
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="dataCheckIn">Data Check-In</label>
+              <input type="date" id="dataCheckIn" formControlName="dataCheckIn" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="dataCheckOut">Data Check-Out</label>
+              <input type="date" id="dataCheckOut" formControlName="dataCheckOut" class="form-control">
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-6">
         <div class="form-group">
-          <label for="dataCheckOut">Data Check-Out</label>
-          <input type="date" id="dataCheckOut" formControlName="dataCheckOut" class="form-control">
+          <label for="stanza">Numero Stanza</label>
+          <select id="stanza" formControlName="stanzaId" class="form-control">
+            <option *ngFor="let room of availableRooms" [value]="room.id">{{ room.numeroStanza }}</option>
+          </select>
         </div>
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label for="stanza">Numero Stanza</label>
-      <select id="stanza" formControlName="stanzaId" class="form-control">
-        <option *ngFor="let room of availableRooms" [value]="room.id">{{ room.numeroStanza }}</option>
-      </select>
-    </div>
-
-    <button type="submit" class="btn btn-success mt-3 me-2">Conferma Modifica</button>
-    <button type="button" class="btn btn-danger mt-3" (click)="goBack()">Annulla</button>
+        <button type="submit" class="btn btn-success mt-3 me-2">Conferma Modifica</button>
+        <button type="button" class="btn btn-danger mt-3" (click)="goBack()">Annulla</button>
       </form>
+    </div>
+  </div>
 </div>
