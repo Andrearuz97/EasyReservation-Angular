@@ -4,8 +4,9 @@
       <h2 class="mb-4">Prenotazione</h2>
 
       <div *ngIf="selectedHotel && selectedRoom" class="mb-4">
-        <h4 class="text-primary">Hotel selezionato: <span class="text-black">{{ selectedHotel.nome }}</span></h4>
-        <h5 class="text-primary">Stanza selezionata: <span class="text-black">{{ selectedRoom.numeroStanza }}</span></h5>
+        <h4>Hotel selezionato: <span class="text-neutral">{{ selectedHotel.nome }}</span></h4>
+        <h5>Stanza selezionata: <span class="text-neutral">{{ selectedRoom.numeroStanza }}</span></h5>
+
       </div>
 
       <div class="row">

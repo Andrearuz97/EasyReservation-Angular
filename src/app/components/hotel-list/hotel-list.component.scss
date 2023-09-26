@@ -1,16 +1,19 @@
-#vedi-dettagli{
+#vedi-dettagli {
   background-color: #4CAF50;
   transition: background-color 0.3s ease;
   border: none;
-  &:hover{
+
+  &:hover {
     background-color: #2c9b2f;
   }
 }
-.paragrafo{
+
+.paragrafo {
   white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .custom-card-link {
   text-decoration: none;
   color: inherit;
@@ -37,10 +40,11 @@
   height: 200px;
   object-fit: cover;
 }
-.btn,btn-primary{
-  width: 100%;
 
+.btn, btn-primary {
+  width: 100%;
 }
+
 .card-title {
   font-size: 24px;
   font-weight: 500;
@@ -81,76 +85,79 @@
   font-size: 16px;
   background-color: transparent;
   transition: box-shadow 0.3s ease;
-}
 
-.search-input:focus {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  &:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .btn-search {
   margin-left: 10px;
   padding: 10px 20px;
-  background-color:#4CAF50;
+  background-color: #4CAF50;
   border: none;
   border-radius: 25px;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #2c891b;
+  }
 }
 
-.btn-search:hover {
-  background-color: #2c891b;
-}
 @media (max-width: 576px) {
   .search-bar {
-      flex-direction: column;
-      padding: 10px;
+    flex-direction: column;
+    padding: 10px;
   }
 
   .search-input, .btn-search {
-      width: 100%;
-      margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 10px;
   }
 
   .btn-search {
-      margin-left: 0;
+    margin-left: 0;
   }
 
   .card {
-      margin-bottom: 20px;
+    margin-bottom: 20px;
   }
 }
 
 @media (min-width: 577px) and (max-width: 768px) {
   .search-input, .btn-search {
-      font-size: 14px;
+    font-size: 14px;
   }
 
   .search-bar {
-      padding: 5px 10px;
+    padding: 5px 10px;
   }
 }
+
 .pagination .page-link i.fa {
   color: #4CAF50;
+}
 
-  &:hover {
-    cursor: pointer;
-
-    @media (min-width: 768px) {
-      transform: scale(2);
-    }
-  }
+.pagination .page-link i.fa:hover {
+  cursor: pointer;
 }
 
 .pagination .page-link {
   color: black;
-
-  &:hover {
-    cursor: pointer;
-
-    @media (min-width: 768px) {
-      transform: scale(1.2);
-    }
-  }
 }
 
+.pagination .page-link:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 769px) {
+  .pagination .page-link i.fa:hover {
+    transform: scale(2);
+  }
+
+  .pagination .page-link:hover {
+    transform: scale(1.2);
+  }
+}

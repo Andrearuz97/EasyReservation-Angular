@@ -1,13 +1,32 @@
-#haveAccount{
+#haveAccount {
   text-align: center;
-  background-color: WHITE;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
 }
 
-.form-control{
-  outline: none !important;
-  box-shadow: none !important;
+#haveAccount a {
+  color: #007BFF;
+  font-weight: bold;
+  text-decoration: underline;
+  transition: color 0.3s ease;
 }
+
+#haveAccount a:hover {
+  color: #0056b3;
+}
+
+
+.form-control {
+  outline: none;
+  box-shadow: none;
+}
+
 .form-control:focus {
-  outline-color:green !important;
-
+  outline-color:#4CAF50;
+  border-color: #4CAF50;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }

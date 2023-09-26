@@ -1,45 +1,45 @@
 <nav class="navbar navbar-expand-lg custom-navbar">
   <a class="navbar-brand ms-2 mb-1" href="#">
-    <img src="../../../assets/favicon_ER.jpeg" alt="Logo EasyReservation" width="35" height="35" class="d-inline-block align-top logo-img">
-    EasyReservation
-</a>
+      <img src="../../../assets/favicon_ER.jpeg" alt="Logo EasyReservation" width="35" height="35" class="d-inline-block align-top logo-img">
+      EasyReservation
+  </a>
 
   <button class="navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
+      <span class="navbar-toggler-icon"></span>
+  </button>
 
   <div class="collapse navbar-collapse ms-2" id="navbarNav">
       <ul class="navbar-nav me-auto">
           <li class="nav-item" *ngIf="!isUserLoggedIn()">
-              <a class="nav-link" routerLink="/login">Login</a>
+              <a class="nav-link" routerLink="/login" (click)="closeNavbar()">Login</a>
           </li>
           <li class="nav-item" *ngIf="!isUserLoggedIn()">
-              <a class="nav-link" routerLink="/register">Registrati</a>
+              <a class="nav-link" routerLink="/register" (click)="closeNavbar()">Registrati</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" routerLink="/home">Home</a>
-          </li>
-          <li class="nav-item"  *ngIf="isUserLoggedIn()">
-              <a class="nav-link" routerLink="/hotels">Hotel</a>
+              <a class="nav-link" routerLink="/home" (click)="closeNavbar()">Home</a>
           </li>
           <li class="nav-item" *ngIf="isUserLoggedIn()">
-              <!--<a class="nav-link" routerLink="/reservation">Prenota</a> --->
+              <a class="nav-link" routerLink="/hotels" (click)="closeNavbar()">Hotel</a>
+          </li>
+          <!--<li class="nav-item" *ngIf="isUserLoggedIn()">
+              <a class="nav-link" routerLink="/reservation" (click)="closeNavbar()">Prenota</a>
+          </li> --->
+          <li class="nav-item" *ngIf="isUserLoggedIn()">
+              <a class="nav-link" routerLink="/user-profile" (click)="closeNavbar()">Profilo</a>
           </li>
           <li class="nav-item" *ngIf="isUserLoggedIn()">
-              <a class="nav-link" routerLink="/user-profile">Profilo</a>
-          </li>
-          <li class="nav-item" *ngIf="isUserLoggedIn()">
-              <a class="nav-link" routerLink="/my-reservations">Le mie prenotazioni</a>
+              <a class="nav-link" routerLink="/my-reservations" (click)="closeNavbar()">Le mie prenotazioni</a>
           </li>
           <li class="nav-item" *ngIf="isUserLoggedIn() && isAdmin()">
-              <a class="nav-link" routerLink="/admin">Dashboard</a>
+              <a class="nav-link" routerLink="/admin" (click)="closeNavbar()">Dashboard</a>
           </li>
       </ul>
       <div *ngIf="isUserLoggedIn()" class="d-flex align-items-center">
           <span *ngIf="userDetails" class="me-3 user-welcome">
               <strong>Bentornato/a {{ userDetails.name }} {{ userDetails.surname }}!</strong>
           </span>
-          <a href="" class="nav-link custom-logout text-center  me-2" (click)="logout()">Logout</a>
+          <a href="" class="nav-link custom-logout text-center me-2" (click)="logout()">Logout</a>
       </div>
   </div>
 </nav>
