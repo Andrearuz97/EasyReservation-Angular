@@ -5,8 +5,10 @@
   <div class="profile-details">
     <p><strong>Nome:</strong> {{ utente.name }}</p>
     <p><strong>Cognome:</strong> {{ utente.surname }}</p>
+    <p><strong>Data di nascita:</strong> {{ utente.dataDiNascita | date:'dd/MM/yyyy' }}</p>
     <p><strong>Città:</strong> {{ utente.citta }}</p>
     <p><strong>Indirizzo:</strong> {{ utente.indirizzo }}</p>
+    <p><strong>Cap:</strong> {{ utente.cap }}</p>
     <p><strong>Email:</strong> {{ utente.email }}</p>
     <p><strong>Telefono:</strong> {{ utente.telefono }}</p>
 

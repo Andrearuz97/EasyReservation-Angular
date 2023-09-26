@@ -24,15 +24,20 @@ export class AdminUserDetailComponent implements OnInit {
 
   fetchUserDetails(): void {
     this.authService.getUserDetailsById(this.userId)
-      .subscribe(
-        data => {
+      .subscribe({
+        next: data => {
           this.user = data;
+          if (data.dataDiNascita) {
+            let date = new Date(data.dataDiNascita);
+            this.user.dataDiNascita = `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2)}`;
+          }
         },
-        error => {
-          console.error('Error fetching user details:', error);
-        }
+        error: err => {
+          console.error('Error fetching user details:', err);
+        }}
       );
   }
+
   deleteUser(): void {
     const decision = confirm("Sei sicuro di voler eliminare l'utente selezionato?");
     if (decision) {

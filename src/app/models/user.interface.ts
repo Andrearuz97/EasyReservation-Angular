@@ -8,4 +8,6 @@ export interface User {
   telefono: string;
   indirizzo: string;
   citta:string;
+  cap: string;
+  dataDiNascita: string;
 }

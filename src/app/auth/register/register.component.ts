@@ -17,6 +17,8 @@ export class RegisterComponent implements OnInit {
   telefono!: string;
   citta!:string;
   indirizzo!: string;
+  cap!: string;
+  dataDiNascita!: string;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -29,7 +31,9 @@ export class RegisterComponent implements OnInit {
       password: form.value.password,
       telefono: form.value.telefono,
       citta: form.value.citta,
-      indirizzo: form.value.indirizzo
+      indirizzo: form.value.indirizzo,
+      cap: form.value.cap,
+      dataDiNascita: form.value.dataDiNascita
     };
 
     this.authService.register(userData).subscribe({
@@ -38,9 +42,10 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       error: (error: any) => {
-        alert('Questa e-mail risulta già utilizzata');
         console.error(error);
+        alert('Devi essere maggiorenne per registrarti!');
         if (error.status == 400) {
+          alert(error.error.message);
           this.router.navigate(['/register']);
         }
       }

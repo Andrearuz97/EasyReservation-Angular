@@ -1,5 +1,13 @@
 #haveAccount{
-  width: 210px;
+  text-align: center;
   background-color: WHITE;
+}
+
+.form-control{
+  outline: none !important;
+  box-shadow: none !important;
+}
+.form-control:focus {
+  outline-color:green !important;
 
 }
