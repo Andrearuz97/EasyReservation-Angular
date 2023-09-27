@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { UserReservationComponent } from './components/user-reservation/user-reservation.component';
 import { EditReservationComponent } from './components/edit-reservation/edit-reservation.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -33,7 +34,7 @@ const routes: Routes = [
   { path: 'admin', loadChildren: () => import('./components/Admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] },
 
   // Rotta di fallback:
-  { path: '**', redirectTo: '/home' }
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

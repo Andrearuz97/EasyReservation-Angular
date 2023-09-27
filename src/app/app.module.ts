@@ -18,6 +18,7 @@ import { RoomDetailsComponent } from './components/room-details/room-details.com
 import { UserReservationComponent } from './components/user-reservation/user-reservation.component';
 import { EditReservationComponent } from './components/edit-reservation/edit-reservation.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RoomDetailsComponent,
     UserReservationComponent,
     EditReservationComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
