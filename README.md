@@ -20,10 +20,10 @@ Prima di iniziare, assicurati di avere installato quanto segue:
 
 1. Clona il repository:
 
-- git clone `https://github.com/tuonome/EasyReservation-Angular.git`
+- git clone `https://github.com/Andrearuz97/EasyReservation-Angular.git`
 
 2. Naviga nella directory del progetto: `cd EasyReservation-Angular`
- - Installa le dipendenze:
+3. Installa le dipendenze:
  - npm install
 
  ## Utilizzo
