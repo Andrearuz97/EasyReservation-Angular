@@ -1,0 +1,81 @@
+.action-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  .btn {
+      flex-shrink: 0;
+      margin-right: 5px;
+
+      &:last-child {
+          margin-right: 0;
+      }
+  }
+}
+.edit-btn, .delete-btn {
+  transition: transform 0.3s ease, color 0.3s ease;
+  padding: 0rem;
+  margin-inline: 0.3rem;
+
+  &:hover {
+    transform: scale(1.4);
+  }
+}
+
+.edit-btn {
+  color: #0044ff;
+
+  &:hover {
+    color: darken(#0044ff, 10%);
+  }
+}
+
+.delete-btn {
+  color: #f00;
+
+  &:hover {
+    color: darken(#f00, 10%);
+  }
+}
+
+@media (max-width: 992px) {
+  .edit-btn, .delete-btn {
+      padding: 0.2rem 0.4rem;
+      font-size: 0.75rem;
+  }
+
+  td {
+    white-space: nowrap;
+  }
+
+  .d-lg-none {
+    width: 100%;
+
+    .card {
+      margin: 0 auto 20px auto;
+      max-width: 600px;
+      width: 100%;
+    }
+  }
+
+  .container h2 {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 600px;
+      width: 100%;
+  }
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .card {
+      width: 80%;
+
+      @media (max-width: 575.98px) {
+          width: 95%;
+      }
+  }
+}

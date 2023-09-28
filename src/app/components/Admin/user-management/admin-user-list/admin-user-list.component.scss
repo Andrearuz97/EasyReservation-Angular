@@ -1,0 +1,26 @@
+.edit-btn, .delete-btn {
+  display: inline-block;
+  border: none;
+  padding: 0;
+  margin: 0 5px;  // Aggiunto un piccolo margine tra le icone
+  transition: 0.3s ease;
+  cursor: pointer;
+  line-height: 1;  // Assicurati che line-height sia consistente
+  vertical-align: middle;  // Centra verticalmente le icone
+}
+
+.edit-btn {
+  color: #0044ff;
+
+  &:hover {
+      color: #0033cc;
+  }
+}
+
+.delete-btn {
+  color: #f00;
+
+  &:hover {
+      color: #cc0000;
+  }
+}

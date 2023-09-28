@@ -39,9 +39,15 @@
             <td>{{ booking.stanza.hotel.nome }}</td>
             <td>{{ booking.stanza.hotel.indirizzo }}</td>
             <td>
-              <button class="btn btn-info mb-1" (click)="editBooking(booking.id, booking.stanza.hotel.id)">Modifica</button>
-              <button class="btn btn-danger" (click)="deleteBooking(booking.id)">Elimina</button>
-            </td>
+              <button class="edit-btn" (click)="editBooking(booking.id, booking.stanza.hotel.id)">
+                  <i class="fas fa-edit"></i>
+              </button>
+              <button class="delete-btn" (click)="deleteBooking(booking.id)">
+                  <i class="fas fa-trash"></i>
+              </button>
+          </td>
+
+
         </tr>
     </tbody>
 </table>
