@@ -6,9 +6,8 @@ Questo è il repository del frontend Angular per l'applicazione EasyReservation,
 
 - **Angular**: Framework di sviluppo front-end.
 - **TypeScript**: Linguaggio di programmazione utilizzato con Angular.
-- **SCSS**: Preprocessor CSS per una gestione più avanzata dello stile.
+- **SCSS**: Preprocessore CSS per una gestione più avanzata dello stile.
 - **Bootstrap**: Framework CSS per la creazione di interfacce utente moderne e responsive.
-- **[Altre tecnologie o librerie utilizzate]**
 
 ## Prerequisiti
 
@@ -16,7 +15,6 @@ Prima di iniziare, assicurati di avere installato quanto segue:
 
 - **Node.js**: Scarica e installa Node.js dal sito ufficiale.
 - **npm**: Node Package Manager, incluso con Node.js.
-- **[Altri prerequisiti specifici del progetto, se applicabile]**
 
 ## Installazione
 
