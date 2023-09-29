@@ -57,6 +57,12 @@ export class UserReservationComponent implements OnInit {
         });
     }
   }
+  calculateTotalPrice(reservation: Reservation): number {
+    const checkInDate = new Date(reservation.dataCheckIn);
+    const checkOutDate = new Date(reservation.dataCheckOut);
+    const daysBetween = (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 3600 * 24);
+    return daysBetween * reservation.stanza.prezzo;
+  }
 
 
 }

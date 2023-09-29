@@ -1,53 +1,50 @@
-<select class="form-control" [(ngModel)]="selectedUserId" (ngModelChange)="selectUser(selectedUserId)">
+<select class="form-control" id="userIdSelect" name="userId" [(ngModel)]="selectedUserId" (ngModelChange)="selectUser(selectedUserId)">
   <option value="" disabled selected>Seleziona un utente</option>
   <option *ngFor="let user of allUsers" [value]="user.idUser">{{ user.name }} {{ user.surname }}</option>
 </select>
-<button class="btn btn-primary my-2" [routerLink]="['/admin/users', selectedUserId]"
-[disabled]="!selectedUserId">Visualizza Dettagli Utente</button>
 
 
-
-
-
+<button class="btn btn-primary my-2"
+      [routerLink]="['/admin/users', selectedUserId]"
+      [disabled]="!selectedUserId">
+  Visualizza Dettagli Utente
+</button>
 
 <h3>Prenotazioni per {{ selectedUserName }}</h3>
 
-
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>ID Prenotazione</th>
-            <th>Data Check-In</th>
-            <th>Data Check-Out</th>
-            <th>Numero Stanza</th>
-            <th>Tipo Stanza</th>
-            <th>Prezzo</th>
-            <th>Hotel</th>
-            <th>Indirizzo Hotel</th>
-            <th>Azioni</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let booking of selectedUserBookings">
-            <td>{{ booking.id }}</td>
-            <td>{{ booking.dataCheckIn | date:'dd/MM/yyyy' }}</td>
-            <td>{{ booking.dataCheckOut | date:'dd/MM/yyyy' }}</td>
-
-            <td>{{ booking.stanza.numeroStanza }}</td>
-            <td>{{ booking.stanza.tipo }}</td>
-            <td>{{ booking.stanza.prezzo | currency:'EUR' }}</td>
-            <td>{{ booking.stanza.hotel.nome }}</td>
-            <td>{{ booking.stanza.hotel.indirizzo }}</td>
-            <td>
+  <thead>
+      <tr>
+          <th>Prenotazione N°</th>
+          <th>Check-In</th>
+          <th>Check-Out</th>
+          <th>Stanza N°</th>
+          <th>Tipo Stanza</th>
+          <th>Prezzo</th>
+          <th>Hotel</th>
+          <th>Indirizzo</th>
+          <th>Azioni</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let booking of selectedUserBookings">
+          <td>{{ booking.id }}</td>
+          <td>{{ booking.dataCheckIn | date:'dd/MM/yyyy' }}</td>
+          <td>{{ booking.dataCheckOut | date:'dd/MM/yyyy' }}</td>
+          <td>{{ booking.stanza.numeroStanza }}</td>
+          <td>{{ booking.stanza.tipo }}</td>
+          <td>{{ calculateTotalPrice(booking) | currency:'EUR' }}</td>
+          <td>{{ booking.stanza.hotel.nome }}</td>
+          <td>{{ booking.stanza.hotel.indirizzo }}</td>
+          <td>
               <button class="edit-btn" (click)="editBooking(booking.id, booking.stanza.hotel.id)">
                   <i class="fas fa-edit"></i>
               </button>
+
               <button class="delete-btn" (click)="deleteBooking(booking.id)">
                   <i class="fas fa-trash"></i>
               </button>
           </td>
-
-
-        </tr>
-    </tbody>
+      </tr>
+  </tbody>
 </table>

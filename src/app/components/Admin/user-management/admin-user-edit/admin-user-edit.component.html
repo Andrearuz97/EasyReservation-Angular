@@ -14,10 +14,11 @@
 
     <div class="form-group my-3">
       <label for="stanzaId">Numero Stanza</label>
-      <select formControlName="stanzaId">
+      <select id="stanzaId" formControlName="stanzaId">
         <option *ngFor="let room of rooms" [ngValue]="room.id">{{ room.numeroStanza }}</option>
       </select>
     </div>
+
 <div>
     <button class="btn btn-success " (click)="updateBooking()">Aggiorna</button>
     <button class="btn btn-danger ms-1" (click)="cancel()">Annulla</button>
