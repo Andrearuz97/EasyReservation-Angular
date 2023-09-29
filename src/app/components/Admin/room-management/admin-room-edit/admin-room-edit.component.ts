@@ -51,6 +51,9 @@ export class AdminRoomEditComponent implements OnInit {
       }
     });
   }
+  navigateToRoomlList(): void {
+    this.router.navigate(['/admin/rooms']);
+  }
 
   loadHotels(): void {
     this.hotelService.getHotels().subscribe(data => {

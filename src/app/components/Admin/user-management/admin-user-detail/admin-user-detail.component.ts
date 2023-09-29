@@ -21,6 +21,9 @@ export class AdminUserDetailComponent implements OnInit {
     this.fetchUserDetails();
   }
 
+  goBack(): void {
+    this.router.navigate(['/admin/users'], { relativeTo: this.route });
+  }
 
   fetchUserDetails(): void {
     this.authService.getUserDetailsById(this.userId)

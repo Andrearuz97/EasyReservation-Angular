@@ -29,9 +29,10 @@ export class ReservationService {
           console.log('Reservations response:', response);
       }),
       catchError(err => {
-          console.error('Error in getPrenotazioniByUserId:', err);
-          return throwError(err);
-      })
+        console.error('Error in getPrenotazioniByUserId:', err);
+        return throwError(() => err);
+    })
+
     );
 }
 

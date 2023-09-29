@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelService } from 'src/app/services/hotel.service';
 import { Hotel } from 'src/app/models/hotel.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-hotel-detail',
@@ -17,7 +17,7 @@ export class AdminHotelDetailComponent implements OnInit {
     stelle: 0
   };
 
-  constructor(private hotelService: HotelService, private route: ActivatedRoute) {}
+  constructor(private hotelService: HotelService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     const idStr = this.route.snapshot.paramMap.get('id');
@@ -34,4 +34,7 @@ export class AdminHotelDetailComponent implements OnInit {
     }
   }
 
+  goBack(): void {
+    this.router.navigate(['/admin/hotels']);
+  }
 }

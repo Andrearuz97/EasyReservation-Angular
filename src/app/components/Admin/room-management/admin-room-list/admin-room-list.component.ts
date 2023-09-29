@@ -24,6 +24,12 @@ export class AdminRoomListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadHotels();
+    const storedHotelId = sessionStorage.getItem('selectedHotelId');
+    if (storedHotelId) {
+      this.selectedHotelId = +storedHotelId;
+      this.loadRooms(this.selectedHotelId);
+    }
+
     this.route.params.subscribe(params => {
       if (params['hotelId']) {
         const hotelId = +params['hotelId'];
@@ -44,21 +50,20 @@ export class AdminRoomListComponent implements OnInit {
   confirmAndEdit(): void {
     if (this.editingRoom) {
       this.roomService.updateRoomInHotel(this.selectedHotelId, this.editingRoom.id, this.editingRoom).subscribe(() => {
-        this.loadRooms(this.selectedHotelId); // Ricarica le stanze dopo la modifica
-        this.editingRoom = null; // Resetta la stanza in editing
+        this.loadRooms(this.selectedHotelId);
+        this.editingRoom = null;
       });
     }
   }
   loadHotels(): void {
-    // Qui puoi caricare gli hotel dal tuo servizio. Ho fatto un esempio di come potrebbe essere:
     this.hotelService.getHotels().subscribe(hotels => this.hotels = hotels);
   }
   loadRooms(hotelId: number | null): void {
     if (hotelId !== null) {
+      sessionStorage.setItem('selectedHotelId', hotelId.toString());
       this.roomService.getRoomsByHotelId(hotelId).subscribe(rooms => this.rooms = rooms);
     }
   }
-
 
   updateFotoUrl(url: string): void {
     if (this.editingRoom) {

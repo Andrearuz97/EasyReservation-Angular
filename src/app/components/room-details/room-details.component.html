@@ -1,10 +1,9 @@
 <div class="container mt-5" *ngIf="room">
-  <!-- Immagine della stanza -->
+
   <div class="room-header mb-3">
     <img *ngIf="room.imageUrl" [src]="room.imageUrl" alt="Immagine della stanza" class="img-fluid room-thumbnail">
   </div>
 
-  <!-- Card per i dettagli della stanza -->
   <div class="card mb-3">
     <div class="card-body">
       <h2 class="card-title">Stanza n. {{room.numeroStanza}}</h2>
@@ -13,7 +12,6 @@
     </div>
   </div>
 
-  <!-- Card per i dettagli dell'hotel -->
   <div class="card mb-3">
     <div class="card-body">
       <h4 class="card-title">Dettagli dell'Hotel</h4>
@@ -26,9 +24,9 @@
     </div>
   </div>
 
-  <!-- Actions section -->
+
   <div class="actions mb-5">
-    <a [routerLink]="['/user-reservation', room.hotel.id, room.id]" class=" my-2 btn btn-success me-3">Prenota ora</a>
-    <a routerLink="/hotels" class="my-2 btn btn-primary">Torna alla lista degli hotel</a>
+    <a [routerLink]="['/hotel', room.hotel.id]" class="my-2 btn btn-primary me-2">Torna ai dettagli dell'hotel</a>
+    <a [routerLink]="['/user-reservation', room.hotel.id, room.id]" class=" my-2 btn btn-success">Prenota ora</a>
   </div>
 </div>

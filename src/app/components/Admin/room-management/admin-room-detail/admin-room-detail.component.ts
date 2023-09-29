@@ -27,6 +27,9 @@ export class AdminRoomDetailComponent implements OnInit {
   });
 
   }
+  navigateToRoomlList(): void {
+    this.router.navigate(['/admin/rooms']);
+  }
 
   loadRoomDetails(hotelId: number, roomId: number): void {
     this.roomService.getRoomByHotelAndRoomId(hotelId, roomId).subscribe({

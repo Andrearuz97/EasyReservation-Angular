@@ -4,9 +4,12 @@
 
   <div class="form-group">
     <label for="selectedHotel">Seleziona Hotel:</label>
-    <select id="selectedHotel" class="form-control" [(ngModel)]="selectedHotelId" (change)="loadRooms(selectedHotelId)">
-      <option *ngFor="let hotel of hotels" [value]="hotel.id">{{ hotel.nome }}</option>
-    </select>
+
+<select id="selectedHotel" class="form-control" [(ngModel)]="selectedHotelId" (change)="loadRooms(selectedHotelId)">
+  <option *ngFor="let hotel of hotels" [value]="hotel.id">{{ hotel.nome }}</option>
+</select>
+
+
   </div>
 
   <div class="room-table-container">

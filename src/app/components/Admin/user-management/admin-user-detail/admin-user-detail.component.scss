@@ -21,7 +21,7 @@
 
           &:hover {
             color: #333;
-            border-bottom: 2px solid transparent; // Prevent jump on hover
+            border-bottom: 2px solid transparent;
           }
 
           &.active {
@@ -39,7 +39,6 @@
   }
 }
 
-// Responsiveness
 @media (max-width: 767px) {
   .admin-dashboard {
     nav {

@@ -19,10 +19,15 @@ export class AdminUserListComponent implements OnInit {
   selectedUserName: string = '';
   selectedUserBookings: Reservation[] = [];
 
-  constructor(private reservationService: ReservationService, private authService: AuthService, private route: ActivatedRoute,  private router: Router) {}
+  constructor(private reservationService: ReservationService, private authService: AuthService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.loadAllUsers();
+
+    const storedUserId = sessionStorage.getItem('selectedUserId');
+    if (storedUserId) {
+      this.selectUser(storedUserId);
+    }
   }
 
   loadAllUsers(): void {
@@ -35,30 +40,36 @@ export class AdminUserListComponent implements OnInit {
   }
 
   selectUser(userId: string): void {
-      if (!userId) {
-          console.error('User ID is not defined!');
-          return;
-      }
-      this.selectedUserId = userId;
+    if (!userId) {
+        console.error('User ID is not defined!');
+        return;
+    }
 
-      this.authService.getUserDetailsById(userId).pipe(
-        switchMap(userDetails => {
-          this.selectedUserName = `${userDetails.name} ${userDetails.surname}`;
-          return this.reservationService.getPrenotazioniByUserId(userId);
-        })
-      ).subscribe({
-        next: data => {
-          this.selectedUserBookings = data;
-        },
-        error: error => {
-          if (error.error && error.error.message === 'User not found') {
-            console.error('Error fetching user details:', error);
-          } else {
-            console.error('Error fetching user bookings:', error);
-          }
+    sessionStorage.setItem('selectedUserId', userId);
+
+    this.selectedUserId = userId;
+
+    this.authService.getUserDetailsById(userId).pipe(
+      switchMap(userDetails => {
+        this.selectedUserName = `${userDetails.name} ${userDetails.surname}`;
+        return this.reservationService.getPrenotazioniByUserId(userId);
+      })
+    ).subscribe({
+      next: data => {
+        this.selectedUserBookings = data;
+      },
+      error: error => {
+        if (error.error && error.error.message === 'User not found') {
+          console.error('Error fetching user details:', error);
+        } else {
+          console.error('Error fetching user bookings:', error);
         }
-      });
+      }
+    });
+
+
   }
+
 
   editBooking(reservationId: number, hotelId: number): void {
     this.router.navigate(['/admin/users/edit', reservationId], { queryParams: { hotelId: hotelId } });

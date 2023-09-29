@@ -63,6 +63,9 @@ export class AdminHotelEditComponent implements OnInit {
         });
     }
 }
+goBack(): void {
+  this.router.navigate(['/admin/hotels'], { relativeTo: this.route });
+}
 
 
 }

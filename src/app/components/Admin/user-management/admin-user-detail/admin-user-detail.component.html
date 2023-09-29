@@ -40,6 +40,7 @@
 <div class="mb-2">
   <button id="delete" class="btn btn-danger" (click)="deleteUser()">Elimina Utente</button>
   <button id="edit" class="btn" (click)="editing = !editing">Modifica Utente</button>
+  <button class="btn btn-warning me-2" (click)="goBack()">Torna indietro</button>
 </div>
   <div *ngIf="editing">
     <h4>Modifica dettagli</h4>

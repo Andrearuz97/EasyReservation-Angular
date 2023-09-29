@@ -13,16 +13,15 @@
     </div>
 
     <div class="form-group my-3">
-      <label for="stanzaId">Numero Stanza</label>
+      <label class="me-2" for="stanzaId">Numero Stanza</label>
       <select id="stanzaId" formControlName="stanzaId">
         <option *ngFor="let room of rooms" [ngValue]="room.id">{{ room.numeroStanza }}</option>
       </select>
     </div>
 
 <div>
+    <button class="btn btn-danger me-2" (click)="goBack()">Indietro</button>
     <button class="btn btn-success " (click)="updateBooking()">Aggiorna</button>
-    <button class="btn btn-danger ms-1" (click)="cancel()">Annulla</button>
-    <button class="btn btn-primary ms-1" (click)="goBack()">Indietro</button>
 
   </div>
   </form>
