@@ -8,12 +8,13 @@
         <tr>
           <th>Nome</th>
           <th>Cognome</th>
-          <th>ID Prenotazione</th>
-          <th>Data Check-In</th>
-          <th>Data Check-Out</th>
-          <th>Numero Stanza</th>
+          <th>Prenotazione N°</th>
+          <th>Check-In</th>
+          <th>Check-Out</th>
+          <th>Stanza n°</th>
           <th>Tipo Stanza</th>
-          <th>Hotel Associato</th>
+          <th>Hotel</th>
+          <th>Prezzo</th>
           <th>Azioni</th>
         </tr>
       </thead>
@@ -27,6 +28,7 @@
           <td>{{ reservation.stanza.numeroStanza }}</td>
           <td>{{ reservation.stanza.tipo }}</td>
           <td>{{ reservation.stanza.hotel.nome }}</td>
+          <td>{{ reservation.stanza.prezzo | currency:'EUR' }}</td>
           <td class="action-container">
             <button class="btn edit-btn" (click)="editReservation(reservation.id)">
                 <i class="fas fa-edit"></i>
@@ -40,22 +42,23 @@
     </table>
   </div>
 
-  <!-- Visualizzazione card per schermi piccoli e tablet -->
-  <div class="d-lg-none">
-    <div class="card mb-3" *ngFor="let reservation of reservations">
-      <div class="card-body">
-        <h5 class="card-title">{{ reservation.utente.name }} {{ reservation.utente.surname }}</h5>
-        <p class="card-text">
-          <strong>ID Prenotazione:</strong> {{ reservation.id }}<br>
-          <strong>Data Check-In:</strong> {{ reservation.dataCheckIn | date:'dd-MM-yyyy' }}<br>
-          <strong>Data Check-Out:</strong> {{ reservation.dataCheckOut | date:'dd-MM-yyyy' }}<br>
-          <strong>Numero Stanza:</strong> {{ reservation.stanza.numeroStanza }}<br>
-          <strong>Tipo Stanza:</strong> {{ reservation.stanza.tipo }}<br>
-          <strong>Hotel Associato:</strong> {{ reservation.stanza.hotel.nome }}
-        </p>
-        <button class="btn btn-primary mb-2 mx-1" (click)="editReservation(reservation.id)">Modifica</button>
-        <button class="btn btn-danger mb-2 mx-1" (click)="deleteReservation(reservation.id)">Cancella</button>
-      </div>
+ <!-- Visualizzazione card per schermi piccoli e tablet -->
+ <div class="d-lg-none">
+  <div class="card mb-3" *ngFor="let reservation of reservations">
+    <div class="card-body">
+      <h5 class="card-title">{{ reservation.utente.name }} {{ reservation.utente.surname }}</h5>
+      <p class="card-text">
+        <strong>ID Prenotazione:</strong> {{ reservation.id }}<br>
+        <strong>Data Check-In:</strong> {{ reservation.dataCheckIn | date:'dd-MM-yyyy' }}<br>
+        <strong>Data Check-Out:</strong> {{ reservation.dataCheckOut | date:'dd-MM-yyyy' }}<br>
+        <strong>Numero Stanza:</strong> {{ reservation.stanza.numeroStanza }}<br>
+        <strong>Tipo Stanza:</strong> {{ reservation.stanza.tipo }}<br>
+        <strong>Hotel:</strong> {{ reservation.stanza.hotel.nome }}<br>
+        <strong>Prezzo:</strong> {{ reservation.stanza.prezzo | currency:'EUR' }}
+      </p>
+      <button class="btn btn-primary mb-2 mx-1" (click)="editReservation(reservation.id)">Modifica</button>
+      <button class="btn btn-danger mb-2 mx-1" (click)="deleteReservation(reservation.id)">Cancella</button>
     </div>
   </div>
-</div>
+ </div>
+  </div>

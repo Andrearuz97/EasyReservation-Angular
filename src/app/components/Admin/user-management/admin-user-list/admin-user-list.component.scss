@@ -2,11 +2,11 @@
   display: inline-block;
   border: none;
   padding: 0;
-  margin: 0 5px;  // Aggiunto un piccolo margine tra le icone
+  margin: 0 5px;
   transition: 0.3s ease;
   cursor: pointer;
-  line-height: 1;  // Assicurati che line-height sia consistente
-  vertical-align: middle;  // Centra verticalmente le icone
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .edit-btn {
@@ -14,6 +14,7 @@
 
   &:hover {
       color: #0033cc;
+      transform: scale(1.4);
   }
 }
 
@@ -22,5 +23,6 @@
 
   &:hover {
       color: #cc0000;
+      transform: scale(1.4);
   }
 }

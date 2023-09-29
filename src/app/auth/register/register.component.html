@@ -3,39 +3,39 @@
 
   <form (submit)="register(form)" #form="ngForm">
       <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingNome" placeholder="Nome" [(ngModel)]="nome" name="name" required>
+          <input type="text" class="form-control" id="floatingNome" placeholder="Nome" [(ngModel)]="nome" name="name" required autocomplete="given-name">
           <label for="floatingNome">Nome</label>
       </div>
       <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingCognome" placeholder="Cognome" [(ngModel)]="cognome" name="surname" required>
+          <input type="text" class="form-control" id="floatingCognome" placeholder="Cognome" [(ngModel)]="cognome" name="surname" required autocomplete="family-name">
           <label for="floatingCognome">Cognome</label>
       </div>
       <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingEmail" placeholder="nome@esempio.com" [(ngModel)]="email" name="email" required>
+          <input type="email" class="form-control" id="floatingEmail" placeholder="nome@esempio.com" [(ngModel)]="email" name="email" required autocomplete="email">
           <label for="floatingEmail">Indirizzo e-mail</label>
       </div>
       <div class="form-floating mb-3">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="password" name="password" required>
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="password" name="password" required autocomplete="new-password">
           <label for="floatingPassword">Password</label>
       </div>
       <div class="form-floating mb-3">
-          <input type="date" class="form-control" id="floatingDataDiNascita" placeholder="Data di Nascita" [(ngModel)]="dataDiNascita" name="dataDiNascita" required>
+          <input type="date" class="form-control" id="floatingDataDiNascita" placeholder="Data di Nascita" [(ngModel)]="dataDiNascita" name="dataDiNascita" required autocomplete="bday">
           <label for="floatingDataDiNascita">Data di Nascita</label>
       </div>
       <div class="form-floating mb-3">
-          <input type="tel" class="form-control" id="floatingTelefono" placeholder="Telefono" [(ngModel)]="telefono" name="telefono" required>
+          <input type="tel" class="form-control" id="floatingTelefono" placeholder="Telefono" [(ngModel)]="telefono" name="telefono" required autocomplete="tel">
           <label for="floatingTelefono">Telefono</label>
       </div>
       <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingCitta" placeholder="Città" [(ngModel)]="citta" name="citta" required>
+          <input type="text" class="form-control" id="floatingCitta" placeholder="Città" [(ngModel)]="citta" name="citta" required autocomplete="address-level2">
           <label for="floatingCitta">Città</label>
       </div>
       <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingIndirizzo" placeholder="Indirizzo" [(ngModel)]="indirizzo" name="indirizzo" required>
+          <input type="text" class="form-control" id="floatingIndirizzo" placeholder="Indirizzo" [(ngModel)]="indirizzo" name="indirizzo" required autocomplete="address-line1">
           <label for="floatingIndirizzo">Indirizzo</label>
       </div>
       <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingCap" placeholder="Cap" [(ngModel)]="cap" name="cap" required>
+          <input type="text" class="form-control" id="floatingCap" placeholder="Cap" [(ngModel)]="cap" name="cap" required autocomplete="postal-code">
           <label for="floatingCap">CAP</label>
       </div>
 

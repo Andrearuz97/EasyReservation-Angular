@@ -2,11 +2,11 @@
   <h2>Accedi</h2>
   <form class="mt-3" (ngSubmit)="login(loginForm)" #loginForm="ngForm">
     <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="floatingInput" placeholder="nome@esempio.com" name="email" required ngModel>
+      <input type="email" class="form-control" id="floatingInput" placeholder="nome@esempio.com" name="email" required ngModel autocomplete="email">
       <label for="floatingInput">Indirizzo e-mail</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required ngModel>
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required ngModel autocomplete="current-password">
       <label for="floatingPassword">Password</label>
     </div>
     <button type="submit" class="btn btn-primary mt-3" [disabled]="loginForm.invalid">Accedi</button>
