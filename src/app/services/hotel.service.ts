@@ -20,7 +20,9 @@ export class HotelService {
       }
     });
   }
-
+  autocompleteSearch(query: string): Observable<Hotel[]> {
+    return this.http.get<Hotel[]>(`${this.baseUrl}/autocomplete`, { params: { query } });
+  }
   getAllHotelsPaged(page: number = 0, size: number = 2): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}hotel/paged?page=${page}&size=${size}`);
   }

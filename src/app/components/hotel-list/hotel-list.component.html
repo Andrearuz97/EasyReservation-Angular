@@ -1,8 +1,31 @@
 <div class="container mt-5">
+  <!-- Search Bar -->
   <div class="search-bar mb-4">
-    <input class="search-input" id="searchInput" name="searchInput" [(ngModel)]="searchTerm" placeholder="Cerca hotel per nome o città...">
+    <input class="search-input"
+           placeholder="Cerca hotel per nome o città..."
+           [formControl]="searchControl">
     <button class="btn-search" (click)="cercaHotel()">Cerca</button>
   </div>
+
+  <!-- Autocomplete Results -->
+  <ul *ngIf="autocompleteHotels.length > 0 && searchControl.value" class="autocomplete-results">
+    <li *ngFor="let hotel of autocompleteHotels" class="autocomplete-item" (click)="selectHotel(hotel)">
+      {{ hotel.nome }} ({{ hotel.citta }})
+    </li>
+  </ul>
+
+  <!-- No Results Message -->
+  <div *ngIf="hotels.length === 0 && searchTerm" class="no-results">
+    <h3>Nessun Hotel Trovato</h3>
+    <p>Non siamo riusciti a trovare hotel che corrispondono alla tua ricerca di "{{ searchTerm }}".</p>
+    <p>Prova a:</p>
+    <ul>
+      <li>Controllare l'ortografia</li>
+      <li>Usare termini di ricerca più generali</li>
+      <li>Usare termini di ricerca diversi</li>
+    </ul>
+  </div>
+
 
   <h2>Lista degli Hotel</h2>
   <div class="row mt-3">
